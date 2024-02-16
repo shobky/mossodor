@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 // import required modules
 import { FreeMode, Pagination } from "swiper/modules";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import Image from "next/image";
 
 export default function FreeModeSlider({ slides }: { slides: any }) {
   const isDekstop = useMediaQuery("(min-width: 768px)");
@@ -32,7 +33,13 @@ export default function FreeModeSlider({ slides }: { slides: any }) {
       >
         {slides.map((slide: any, index: any) => (
           <SwiperSlide key={index} className="">
-            <img className=" object-cover" src={slide.img} alt={slide.title} />
+            <Image
+              width={400}
+              height={400}
+              className=" object-cover"
+              src={slide.img}
+              alt={slide.name}
+            />
             <p className="text-sm sm:text-lg font-semibold text-center pt-1 ">
               {slide.name}
             </p>
