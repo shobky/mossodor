@@ -2,40 +2,45 @@ import React from "react";
 import Logo from "../shared/logo";
 import MobileNavMenu from "./components/mobileNavMenu";
 import {
-  CarTaxiFront,
   Heart,
-  ShoppingBag,
   ShoppingCart,
   User,
 } from "lucide-react";
 import { Nav } from "./components/nav";
-import { Search } from "../search";
+import { Search } from "./components/search";
+import DynamicHeaderOnScroll from "./components/dynamicHeaderOnScroll";
 
 export default function Header() {
   return (
-    <div className="h-36">
-      <header className="space-y-4 p-12 fixed w-full  z-20 ">
-        <div className="flex justify-between items-center px-[10vw] text-white">
-          <div className="flex items-center">
-            <MobileNavMenu />
-            <Logo width={250} height={100} className="w-32 sm:w-40" />
-          </div>
-          <div className="flex items-center gap-3 ">
-            <Search />
-            <User size={32} className="hover:bg-white/10 p-1.5 rounded-full" />
-            <Heart size={32} className="hover:bg-white/10 p-1.5 rounded-full" />
-            <ShoppingCart
-              size={32}
-              className="hover:bg-white/10 p-1.5 rounded-full"
-            />
-          </div>
+    <DynamicHeaderOnScroll>
+      <div className="flex justify-between items-center px-[.9rem]">
+        <div className="flex items-center gap-2">
+          <MobileNavMenu />
+          <Logo width={250} height={100} className="w-[8.5rem] sm:w-48" />
         </div>
-        <hr className=" mx-[10vw] border-white/20" />
-        <div className="">
-          <Nav />
-          <hr className=" mx-[10vw] border-white/20 mt-4" />
-        </div>
-      </header>
-    </div>
+        <QuickNavLinks />
+      </div>
+      <Nav />
+    </DynamicHeaderOnScroll>
   );
 }
+
+export const QuickNavLinks = () => {
+  return (
+    <div className="flex items-center gap-1 sm:gap-3 ">
+      <Search />
+      <User
+        size={32}
+        className="hover:bg-white/10 hover:backdrop-blur-lg p-1.5 rounded-full hidden sm:block"
+      />
+      <Heart
+        size={32}
+        className="hover:bg-white/10 hover:backdrop-blur-lg p-1.5 rounded-full"
+      />
+      <ShoppingCart
+        size={32}
+        className="hover:bg-white/10 hover:backdrop-blur-lg p-1.5 rounded-full"
+      />
+    </div>
+  );
+};

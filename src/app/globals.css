@@ -66,16 +66,78 @@
   }
 }
 
+
+@font-face {
+  font-family: "Olivera";
+  src: url("/font/oliver/Olivera_Demo.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Olivera', sans-serif;
+
   }
 }
 
 .gradient-background {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(0deg, rgba(2, 0, 36, 0) 0%, rgba(0, 0, 0, 1) 86%);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 1) 99%
+  );
+}
+
+.pretty-scrollbar::-webkit-scrollbar {
+  width: 12px;
+  height: 8px;
+}
+
+/* Track */
+.pretty-scrollbar::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+/* Handle */
+.pretty-scrollbar::-webkit-scrollbar-thumb {
+  background: #8d8d8d;
+}
+
+/* Handle on hover */
+.pretty-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+.swiper-slide .title {
+  font-size: 41px;
+  font-weight: 300;
+}
+
+.swiper-slide .subtitle {
+  font-size: 21px;
+}
+
+.swiper-slide .text {
+  font-size: 14px;
+  max-width: 400px;
+  line-height: 1.3;
 }

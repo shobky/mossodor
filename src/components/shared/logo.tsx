@@ -6,18 +6,21 @@ export default function Logo({
   width,
   height,
   className,
+  theme,
 }: {
   width: number;
   height: number;
   className?: string;
+  theme?: "dark" | "light";
 }) {
   return (
     <Image
-      width={width}
-      height={height}
+      width={width + 150}
+      height={height + 150}
+      priority
       alt="Mossodor logo"
-      src="/mossodor.png"
-      className={cn(" object-contain h-8", className)}
+      src={theme === "dark" ? "/logos/logo-black.png" : "/logos/logo-white.png"}
+      className={cn("object-contain ", className)}
     />
   );
 }

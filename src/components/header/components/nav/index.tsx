@@ -1,22 +1,20 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
 
-import { cn } from "@/lib/utils";
 import {
   NavigationMenuContent,
   NavigationMenu,
 } from "@radix-ui/react-navigation-menu";
 import {
-  NavigationMenuLink,
   NavigationMenuTrigger,
   NavigationMenuList,
   NavigationMenuItem,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { useMediaQuery } from "@/hooks/useMediaQuery";
+import RoomsSecion from "./roomsSecion";
+import { ListItem } from "./listItem";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -57,176 +55,158 @@ const components: { title: string; href: string; description: string }[] = [
 ];
 
 export function Nav() {
-  const isDekstop = useMediaQuery("(min-width: 1024px)");
-
-  if (isDekstop) {
-    return (
-      <NavigationMenu >
-        <NavigationMenuList className="flex items-center">
-          <Button variant={"skumorph"}>
-            <Link href="/shop">Shop</Link>
-          </Button>
-          <NavigationMenuItem className=" relative">
-            <NavigationMenuTrigger className="bg-black text-white text-base">
-              Chandeliers
-            </NavigationMenuTrigger>
-            <NavigationMenuContent
-              className="
-              bg-white/10 text-white z-30 
-           data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-20 data-[motion=from-start]:slide-in-from-left-20 data-[motion=to-end]:slide-out-to-right-20 data-[motion=to-start]:slide-out-to-left-20 md:absolute md:w-auto 
-          absolute left-0 mt-2  rounded-lg"
-            >
-              <ul className="grid gap-3 p-4 md:w-[245px] lg:w-[360px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <Image
-                    src="/categories/chandelier.jpg"
-                    width={500}
-                    height={650}
-                    alt="Chandeliers"
-                    className="h-full w-[full] object-cover rounded-md"
-                  />
-                </li>
-                <ListItem
-                  className="text-white opacity-100"
-                  href="/docs"
-                  title="Crystal chandeliers"
-                >
-                  Starting From £125
-                </ListItem>
-                <ListItem
-                  className="text-white opacity-100"
-                  href="/docs/installation"
-                  title="  Led Chandeliers"
-                >
-                  Starting From £245
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem className=" relative">
-            <NavigationMenuTrigger className="bg-black text-white text-base">
-              Pendant Lights
-            </NavigationMenuTrigger>
-            <NavigationMenuContent
-              className="
-              bg-white/10 text-white z-30 
-           data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-20 data-[motion=from-start]:slide-in-from-left-20 data-[motion=to-end]:slide-out-to-right-20 data-[motion=to-start]:slide-out-to-left-20 md:absolute md:w-auto 
-          absolute left-0 mt-2  rounded-lg"
-            >
-              <ul className="grid gap-3 p-4 md:w-[245px] lg:w-[360px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <Image
-                    src="/categories/pendant.jpg"
-                    width={500}
-                    height={650}
-                    alt="Chandeliers"
-                    className="h-full w-[full] object-cover rounded-md"
-                  />
-                </li>
-                <ListItem
-                  className="text-white opacity-100"
-                  href="/docs"
-                  title="Glass Pendant Lights"
-                >
-                  Starting From £425
-                </ListItem>
-                <ListItem
-                  className="text-white opacity-100"
-                  href="/docs/installation"
-                  title="Copper Pendant Lights"
-                >
-                  Starting From £145
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem className=" relative">
-            <NavigationMenuTrigger className="bg-black text-white text-base">
-              Wall Lights
-            </NavigationMenuTrigger>
-            <NavigationMenuContent
-              className="
-              bg-white/10 text-white z-30 
-           data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-20 data-[motion=from-start]:slide-in-from-left-20 data-[motion=to-end]:slide-out-to-right-20 data-[motion=to-start]:slide-out-to-left-20 md:absolute md:w-auto 
-          absolute left-0 mt-2  rounded-lg"
-            >
-              <ul className="grid gap-3 p-4 md:w-[245px] lg:w-[360px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <Image
-                    src="/categories/wallLight.jpg"
-                    width={500}
-                    height={650}
-                    alt="Chandeliers"
-                    className="h-full w-[full] object-cover rounded-md"
-                  />
-                </li>
-                <ListItem
-                  className="text-white opacity-100"
-                  href="/docs"
-                  title="Gold Wall Lights"
-                >
-                  Starting From £425
-                </ListItem>
-                <ListItem
-                  className="text-white opacity-100"
-                  href="/docs/installation"
-                  title="Led Wall Lights
+  return (
+    <NavigationMenu className="border border-white/10 border-x-0 py-4 hidden sm:block">
+      <NavigationMenuList className="flex items-center justify-between ">
+        <Button variant={"skumorph"}>
+          <Link href="/shop">Shop</Link>
+        </Button>
+        <NavigationMenuItem className=" relative">
+          <NavigationMenuTrigger className="text-base">
+            Chandeliers
+          </NavigationMenuTrigger>
+          <CustomNavigationMenuContent>
+            <ul className="grid gap-3 p-4 md:w-[245px] lg:w-[360px] lg:grid-cols-[.75fr_1fr]">
+              <li className="row-span-3">
+                <Image
+                  src="/categories/chandelier.jpg"
+                  width={500}
+                  height={650}
+                  priority
+                  alt="Chandeliers"
+                  className="h-full w-[full] object-cover rounded-md"
+                />
+              </li>
+              <ListItem
+                className="opacity-100"
+                href="/docs"
+                title="Crystal chandeliers"
+              >
+                Starting From £125
+              </ListItem>
+              <ListItem
+                className="opacity-100"
+                href="/docs/installation"
+                title="  Led Chandeliers"
+              >
+                Starting From £245
+              </ListItem>
+            </ul>
+          </CustomNavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem className=" relative">
+          <NavigationMenuTrigger className="text-base">
+            Pendant Lights
+          </NavigationMenuTrigger>
+          <CustomNavigationMenuContent>
+            <ul className="grid gap-3 p-4 md:w-[245px] lg:w-[360px] lg:grid-cols-[.75fr_1fr]">
+              <li className="row-span-3">
+                <Image
+                  src="/categories/pendant.jpg"
+                  width={500}
+                  height={650}
+                  priority
+                  alt="Chandeliers"
+                  className="h-full w-[full] object-cover rounded-md"
+                />
+              </li>
+              <ListItem
+                className="opacity-100"
+                href="/docs"
+                title="Glass Pendant Lights"
+              >
+                Starting From £425
+              </ListItem>
+              <ListItem
+                className="opacity-100"
+                href="/docs/installation"
+                title="Copper Pendant Lights"
+              >
+                Starting From £145
+              </ListItem>
+            </ul>
+          </CustomNavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem className=" relative">
+          <NavigationMenuTrigger className="text-base">
+            Wall Lights
+          </NavigationMenuTrigger>
+          <CustomNavigationMenuContent>
+            <ul className="grid gap-3 p-4 md:w-[245px] lg:w-[360px] lg:grid-cols-[.75fr_1fr]">
+              <li className="row-span-3">
+                <Image
+                  src="/categories/wallLight.jpg"
+                  width={500}
+                  height={650}
+                  priority
+                  alt="Chandeliers"
+                  className="h-full w-[full] object-cover rounded-md"
+                />
+              </li>
+              <ListItem
+                className="opacity-100"
+                href="/docs"
+                title="Gold Wall Lights"
+              >
+                Starting From £425
+              </ListItem>
+              <ListItem
+                className="opacity-100"
+                href="/docs/installation"
+                title="Led Wall Lights
 "
-                >
-                  Starting From £145
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem className=" relative text-white">
-            <Link href="/docs" legacyBehavior passHref>
-              <Button variant={"skumorph"} className="text-base">
-                Blog
-              </Button>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem className=" relative text-white">
-            <Link href="/docs" legacyBehavior passHref>
-              <Button variant={"skumorph"} className="text-base">
-                Sale
-              </Button>
-            </Link>
-          </NavigationMenuItem>
-          <NavigationMenuItem className=" relative text-white">
-            <Link href="/docs" legacyBehavior passHref>
-              <Button variant={"skumorph"} className="text-base">
-                Clearance
-              </Button>
-            </Link>
-          </NavigationMenuItem>
-        </NavigationMenuList>
-      </NavigationMenu>
-    );
-  }
+              >
+                Starting From £145
+              </ListItem>
+            </ul>
+          </CustomNavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem className=" relative">
+          <NavigationMenuTrigger className="text-base">
+            Rooms
+          </NavigationMenuTrigger>
+          <CustomNavigationMenuContent>
+            <RoomsSecion />
+          </CustomNavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem className=" relative ">
+          <Link href="/docs" legacyBehavior passHref>
+            <Button variant={"skumorph"} className="text-base">
+              Blog
+            </Button>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem className=" relative ">
+          <Link href="/docs" legacyBehavior passHref>
+            <Button variant={"skumorph"} className="text-base">
+              Sale
+            </Button>
+          </Link>
+        </NavigationMenuItem>
+        <NavigationMenuItem className=" relative ">
+          <Link href="/docs" legacyBehavior passHref>
+            <Button variant={"skumorph"} className="text-base">
+              Clearance
+            </Button>
+          </Link>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const CustomNavigationMenuContent = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   return (
-    <li>
-      <NavigationMenuLink asChild>
-        <a
-          ref={ref}
-          className={cn(
-            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-            className
-          )}
-          {...props}
-        >
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-            {children}
-          </p>
-        </a>
-      </NavigationMenuLink>
-    </li>
+    <NavigationMenuContent
+      className="backdrop-blur-xl bg-black/40 z-30 
+data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-20 data-[motion=from-start]:slide-in-from-left-20 data-[motion=to-end]:slide-out-to-right-20 data-[motion=to-start]:slide-out-to-left-20 md:absolute md:w-auto 
+absolute left-0 mt-6 rounded-lg"
+    >
+      {children}
+    </NavigationMenuContent>
   );
-});
-ListItem.displayName = "ListItem";
+};
