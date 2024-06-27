@@ -55,7 +55,7 @@ export default function FilteredProducts({
       return product.otherSpecifications.some((spec) => {
         return (
           spec.name === filter.name &&
-          spec.value.some((value: string) => filter.value.includes(value))
+          spec.value?.some((value: string) => filter.value.includes(value))
         );
       });
     });

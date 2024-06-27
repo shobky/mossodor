@@ -56,3 +56,8 @@ export const getSimilarProducts = async (
   });
   return data.products;
 };
+
+export const getPopularProducts = async () => {
+  const data = await Fetch(`products/popular/8`);
+  return data.products;
+};

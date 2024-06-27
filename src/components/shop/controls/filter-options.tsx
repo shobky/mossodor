@@ -14,8 +14,12 @@ export const FilterOptions = ({
       value: ["Crystal", "Glass", "Metal", "Plastic", "Wood"],
     },
     {
-      name: "Color",
+      name: "Colour",
       value: ["Red", "Green", "Blue", "Yellow", "Black", "White"],
+    },
+    {
+      name: "Bulb_Base",
+      value: ["E27", "E14", "G9", "G4", "Build-in LED", "T45"],
     },
   ];
 
