@@ -51,7 +51,7 @@ function HeroActions() {
      <Link href={"/about-us"}>
      <Button
         variant="outline"
-        className="h-12 hidden sm:flex border-white hover:border-background/20 transition-colors  bg-transparent hover:bg-background/80"
+        className="h-12 hidden  sm:flex border-white hover:border-background/20 transition-colors  bg-transparent hover:bg-background/80"
       >
         ABOUT US
       </Button></Link>

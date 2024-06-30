@@ -46,5 +46,5 @@ export const useQueryParams = () => {
     [searchParams]
   );
 
-  return { setParam, removeParam, getParam };
+  return { setParam, removeParam, getParam, pathname };
 };

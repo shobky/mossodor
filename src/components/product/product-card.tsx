@@ -5,7 +5,6 @@ import React from "react";
 
 // this is the product card displayed in the popular products section in home.
 export default function ProductCard({ product }: { product: any }) {
-  const rate = Math.floor(Math.random() * 4) + 4;
   return (
     <div className="border border-background sm:hover:border-input/50 cursor-pointer rounded-3xl grid">
       <div className="bg-secondary/50 group p-4 hover:bg-secondary/20  rounded-3xl h-auto overflow-hidden">
@@ -26,16 +25,16 @@ export default function ProductCard({ product }: { product: any }) {
         <div className="flex justify-between items-center gap-2">
           <p className="font-bold">£{product.price}</p>
           <div className="flex gap-0.5">
-            {Array.from({ length: rate }).map((_, index) => (
+            {Array.from({ length: 5 }).map((_, index) => (
               <StarIcon
                 key={index}
                 className="text-yellow-500 w-4 h-4"
                 fill="rgb(234 179 8)"
               />
             ))}
-            {Array.from({ length: 5 - rate }).map((_, index) => (
+            {/* {Array.from({ length: 5 - 5 }).map((_, index) => (
               <StarIcon key={index} className="text-yellow-500 w-4 h-4" />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>

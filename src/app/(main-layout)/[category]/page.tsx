@@ -1,5 +1,5 @@
 import { Padding } from "@/components/page-layout";
-import CategoriesProducts from "@/components/shop/products/list/categories-products";
+import { CategoriesProducts } from "@/components/shop/products/categories-products";
 import { Fetch } from "@/lib/actions/fetch";
 import { ICategory } from "@/lib/types";
 import { Metadata } from "next";
@@ -48,7 +48,7 @@ export default async function CategoryPage({
     console.error(e);
   }
 
-  if (!category) return  permanentRedirect("/shop");
+  if (!category) return permanentRedirect("/shop");
   return (
     <Padding className="min-h-[95vh] grid place-content-center gap-20 py-[8vh]">
       <div className="w-full h-[var(--header-height)] bg-foreground  rounded-b-[40px] sm:rounded-b-[80px]  dark:bg-background absolute top-0 left-0" />
@@ -80,11 +80,9 @@ export default async function CategoryPage({
       </section>
       <section className="space-y-4">
         <h2 className="text-center font-semibold text-3xl capitalize">
-          Explore Products In The {category?.name}     Collection
+          Explore Products In The {category?.name} Collection
         </h2>
-        <div>
-          {category && <CategoriesProducts categorySlug={category.slug} />}
-        </div>
+        <div>{category && <CategoriesProducts category={category.slug} />}</div>
       </section>
     </Padding>
   );

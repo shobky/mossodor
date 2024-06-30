@@ -16,18 +16,13 @@ export const useShopControls = (
   const filters = useSelector(selectFilters);
   const dispatch = useDispatch();
 
-  const convertToUnderscore = (name: string) => {
-    return name.replace(/\s+/g, '_');
-  };
-
   const handleFilters = (name: string, value: string) => {
-    const convertedName = convertToUnderscore(name);
     let newFilters = filters.map((filter) => ({ ...filter })); // Create a deep copy of filters
-    const index = newFilters.findIndex((f) => f.name === convertedName);
+    const index = newFilters.findIndex((f) => f.name.replace(" ", "_") === name.replace(" ", "_"));
   
     if (index === -1) {
       // If the filter name doesn't exist, add a new filter with the value
-      newFilters.push({ name: convertedName, value: [value] });
+      newFilters.push({ name, value: [value] });
     } else {
       const valueExists = newFilters[index].value.includes(value);
       if (valueExists) {

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { SlidersHorizontal } from "lucide-react";
+import { ResetFilters } from "./reset-filters";
 
 export const FilterOptions = ({
   filters,
@@ -15,11 +16,22 @@ export const FilterOptions = ({
     },
     {
       name: "Colour",
-      value: ["Red", "Green", "Blue", "Yellow", "Black", "White"],
+      value: ["Black", "White", "Chrome", "Rose Gold", "Gold"],
     },
     {
       name: "Bulb_Base",
       value: ["E27", "E14", "G9", "G4", "Build-in LED", "T45"],
+    },
+    {
+      name: "Style",
+      value: [
+        "Modern",
+        "Classic",
+        "Industrial",
+        "Scandinavian",
+        "Retro",
+        "Vintage",
+      ],
     },
   ];
 
@@ -27,7 +39,7 @@ export const FilterOptions = ({
     <div className="py-3 space-y-4 border shadow-md sm:shadow-none sm:border-none bg-background rounded-xl ">
       <p className="flex items-center justify-between px-3 text-lg font-semibold ">
         Filters
-        <SlidersHorizontal className="hidden lg:block" size={18} />
+        <ResetFilters  />
       </p>
       <div className="gap-4">
         {options.map((option) => (

@@ -1,10 +1,14 @@
-import Shop from "@/components/shop";
-import ShopProducts from "@/components/shop/products/list/shop-products";
+"use client";
+import FilteredProducts from "@/components/shop/products/filtered-products";
+import { useProducts } from "@/lib/hooks/redux-hooks/use-products";
 
 export default function ShopPage() {
+  const { products, loading, isFetching } = useProducts();
   return (
-    <Shop>
-      <ShopProducts />
-    </Shop>
+    <FilteredProducts
+      products={products}
+      loading={loading}
+      isFetching={isFetching}
+    />
   );
 }

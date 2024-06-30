@@ -25,7 +25,7 @@ const Search = ({
     <div className="relative flex items-center w-full">
       <Input
         autoComplete="off"
-        className={cn("w-full", className)}
+        className={cn("w-full pr-8", className)}
         value={v}
         onChange={(e) => {
           setV(e.target.value);

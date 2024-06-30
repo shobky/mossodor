@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ReduxProvider } from "@/providers/redux-provider";
 import { ThemeProvider } from "@/providers/theme.provider";
 import SessionProvider from "@/providers/session-provider";
 import { getCurrentSession } from "../lib/auth";
 import { Toaster } from "@/components/ui/sonner";
+import localFont from 'next/font/local'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = localFont({ src: '../../public/font/Inter-VariableFont_slnt,wght.ttf' })
 
 export const metadata: Metadata = {
   title: "Mossodor",

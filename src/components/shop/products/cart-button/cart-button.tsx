@@ -53,17 +53,20 @@ export default function CartButton({
       <Button
         disabled={item}
         onClick={handleAddToCart}
-        className="font-semibold gap-2 ease-in-out duration-300"
+        className="font-semibold gap-2 ease-in-out duration-300 hover:bg-foreground bg-foreground/95 text-background hover:contrast-200"
       >
         {item ? (
           <>
-            <Check size={15} className="text-green-500" /> In cart
+            <Check size={15} className="" /> In cart{" "}
           </>
-        ) : loading ? (
-          <Loader2 className="animate-spin" size={15} strokeWidth={3} />
         ) : (
           <>
-            <ShoppingBag size={15} /> Add to cart
+            {loading ? (
+              <Loader2 className="animate-spin" size={15} strokeWidth={3} />
+            ) : (
+              <ShoppingBag size={15} />
+            )}
+            Add to cart
           </>
         )}
       </Button>

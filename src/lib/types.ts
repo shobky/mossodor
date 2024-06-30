@@ -83,3 +83,23 @@ export interface IOrder {
   address: IAddress;
   user_id: string;
 }
+
+export interface IVariationGroup {
+  _id: string;
+  selectors: any;
+  product_id: string;
+  variations: {
+    type: string;
+    value: string;
+    sku: string;
+    ean: string;
+    price: number;
+    weight: string;
+    height: string;
+    width: string;
+    length: string;
+    images: string[];
+    thumpnail: string;
+    otherSpecifications: any[];
+  }[];
+}

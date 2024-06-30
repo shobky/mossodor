@@ -47,6 +47,7 @@ export const ThemeSwitch = ({ className }: { className?: string }) => {
         <span>Dark mode</span>
       </p>
       <Switch
+        className="bg-primary"
         checked={theme === "dark"}
         onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       />

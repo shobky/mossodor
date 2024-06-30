@@ -6,10 +6,12 @@ import CartButton from "./cart-button/cart-button";
 import { WhichLIstButton } from "../wishlist-button/whishlist-button";
 
 export default function ProductCard({
+  query,
   product,
   wishlsitItems,
   cartItems,
 }: {
+  query?:string
   product: IProduct;
   wishlsitItems: IProduct[];
   cartItems: any[];
@@ -18,7 +20,7 @@ export default function ProductCard({
     <div className="group ">
       <div className="rounded-2xl aspect-square overflow-hidden">
         <div className="relative bg-muted group-hover:bg-foreground/5  rounded-xl ">
-          <Link scroll={false} prefetch href={`/products/${product.name}`}>
+          <Link scroll={false} prefetch href={`/products/${product.name}?q=${query}`}>
             <Image
               src={product.thumpnail}
               alt={product.altText}

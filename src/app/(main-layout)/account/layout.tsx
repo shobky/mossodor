@@ -43,24 +43,9 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
     <>
       <hr />
       <Padding className="min-h-screen py-10 ">
-        <div className="md:hidden">
-          <Image
-            src="/examples/forms-light.png"
-            width={1280}
-            height={791}
-            alt="Forms"
-            className="block dark:hidden"
-          />
-          <Image
-            src="/examples/forms-dark.png"
-            width={1280}
-            height={791}
-            alt="Forms"
-            className="hidden dark:block"
-          />
-        </div>
-        <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-16 lg:space-y-0">
-          <aside className="-mx-4 lg:w-1/6">
+       
+        <div className="flex  flex-row lg:space-x-16">
+          <aside className="-mx-4 lg:w-1/6 hidden md:block">
             <div className="sticky top-10">
               <SidebarNav items={sidebarNavItems} />
             </div>

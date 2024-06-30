@@ -10,7 +10,7 @@ export default function AuthButton() {
   const session = useSession();
   const pathname = usePathname();
   return (
-    <div className="w-full">
+    <div className="w-full text-base">
       {session?.data?.user ? (
         <Button
           className="w-full justify-start p-0 hover:bg-transparent font-medium gap-3"

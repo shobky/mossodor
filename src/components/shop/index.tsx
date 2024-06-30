@@ -12,8 +12,8 @@ export default function Shop({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col mb-[15vh] sm:mb-[30vh]">
-      <div className="z-10 top-0  -mt-[var(--header-height)] min-h-[175px] h-[50vh] sm:h-[60svh] bg-black">
+    <div className="flex flex-col mb-[15vh] sm:mb-[20vh] 2xl:mb-[37vh]">
+      <div className="z-10 top-0 -mt-[var(--header-height)] min-h-[175px] h-[35vh] sm:h-[60svh] 2xl:h-[50vh] bg-black">
         <ShopBanner />
       </div>
 

@@ -29,6 +29,9 @@ export const productsSlice = createSlice({
     setFilters: (state, action) => {
       state.filters = action.payload;
     },
+    resetFilters: (state) => {
+      state.filters = [];
+    },
   },
   extraReducers: (builder) => {
     fetchPaginatedProductsReducers(builder);

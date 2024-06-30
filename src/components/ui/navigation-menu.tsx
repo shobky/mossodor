@@ -5,7 +5,6 @@ import { cva } from "class-variance-authority";
 import { ChevronDown } from "lucide-react";
 
 import { cn } from "@/lib/utils/cn";
-import { usePathname } from "next/navigation";
 import { TRANSPARENT_PAGES } from "../page-layout/header/header-provider";
 import { useQueryParams } from "@/lib/hooks/use-query-params";
 
@@ -93,8 +92,7 @@ const NavigationMenuViewport = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => {
-  const pathname = usePathname();
-  const { getParam } = useQueryParams();
+  const { getParam, pathname } = useQueryParams();
   const dialog = getParam("dialog");
   const glassMorphism =
     !dialog && TRANSPARENT_PAGES[pathname?.split("/")[1] ?? ""];

@@ -21,9 +21,7 @@ export const fetchPaginatedProductsReducers = (
       const newProducts = action.payload.products.filter((product) => {
         return !state.products.some((p) => p._id === product._id);
       });
-      newProducts.forEach((product) => {
-        state.products.push(product);
-      });
+      state.products = [...state.products, ...newProducts];
       state.totalProducts = action.payload.count;
     })
     .addCase(fetchPaginatedProductsThunk.rejected, (state, action) => {

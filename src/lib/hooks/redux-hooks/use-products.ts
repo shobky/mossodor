@@ -20,18 +20,8 @@ export const useProducts = (limit?: number) => {
   const { filters } = useShopControls("q");
   const dispatch = useDispatch();
 
-  useEffect(() => {}, [filters]);
-
-  const fetchMoreData = async () => {
-    if (totalProducts && products.length >= totalProducts) return;
-    if (filters.length === 0) {
-      await dispatch(
-        fetchPaginatedProductsThunk({
-          page,
-          pageSize: limit ?? 20,
-        })
-      );
-    } else {
+  useEffect(() => {
+    const fetchFilteredData = async () => {
       await dispatch(
         fetchFilteredProductsThunk({
           filters: filters,
@@ -39,8 +29,20 @@ export const useProducts = (limit?: number) => {
           pageSize: limit ?? 20,
         })
       );
-    }
+    };
+    fetchFilteredData();
+  }, [filters]);
 
+  const fetchMoreData = async () => {
+    if (totalProducts && products.length >= totalProducts) return; // All data has been fetched
+    if (filters.length > 0) return; // All products with this filter has been fetched
+
+    await dispatch(
+      fetchPaginatedProductsThunk({
+        page,
+        pageSize: limit ?? 20,
+      })
+    );
     setPage(page + 1);
   };
 

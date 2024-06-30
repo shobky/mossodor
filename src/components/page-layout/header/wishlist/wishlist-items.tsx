@@ -31,7 +31,7 @@ export default function WishlistItems({ q }: { q: string }) {
         isAuthenticated={session?.status === "authenticated" ? true : false}
       />
       <div className="pb-[10vh] space-y-4">
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-2">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(10rem,1fr))] sm:grid-cols-[repeat(auto-fill,minmax(12rem,1fr))] gap-2">
           {filteredItems.map((item) => (
             <div key={item._id} className="w-full ">
               <ProductCard

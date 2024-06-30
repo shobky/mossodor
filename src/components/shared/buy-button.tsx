@@ -7,10 +7,23 @@ import { ArrowUpRight } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useDispatch } from "@/lib/redux/store";
 import { createCheckoutSession } from "@/lib/stripe/create-checkout-session";
+import { toast } from "sonner";
 
-const asyncStripe = loadStripe(
-  String(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
-);
+let asyncStripe: Promise<Stripe | null>;
+try {
+  asyncStripe = loadStripe(
+    String(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+  );
+} catch (err) {
+  toast.error(
+    <div>
+      <p className="font-bold text-sm">Failed to load essential features</p>
+      <p className="font-medium">
+        Please make sure your internet connection is stable before checkout.
+      </p>
+    </div>
+  );
+}
 
 const BuyButton = ({
   items,
@@ -27,12 +40,24 @@ const BuyButton = ({
   const { data: session } = useSession();
   const [stripe, setStripe] = useState<Stripe | null>(null);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     async function loadStripeInstance() {
-      const stripeInstance = await asyncStripe;
-      setStripe(stripeInstance);
+      try {
+        const stripeInstance = await asyncStripe;
+        setStripe(stripeInstance);
+      } catch (err: any) {
+        toast.error(
+          <div>
+            <p className="font-bold text-sm">
+              Failed to load essential features
+            </p>
+            <p className="font-medium">
+              Please make sure your internet connection is stable before
+              checkout.
+            </p>
+          </div>
+        );
+      }
     }
     loadStripeInstance();
   }, []);
@@ -42,7 +67,7 @@ const BuyButton = ({
     if (!session) {
       if (buyingSingleProduct) {
         router.push(
-        `/login?msg=please login first and we will redirect you back.&callback=/products/${productName}`
+          `/login?msg=please login first and we will redirect you back.&callback=/products/${productName}`
         );
       } else {
         router.push(

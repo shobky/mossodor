@@ -1,6 +1,6 @@
 import Shop from "@/components/shop";
 
-export default async function ShopLayout({
+export default async function ShopSubCategoryLayout({
   children,
   params,
 }: Readonly<{
@@ -8,10 +8,8 @@ export default async function ShopLayout({
   params: { category: string; subCategory: string };
 }>) {
   return (
-    <main className="">
-      <Shop categorySlug={params.category} subCategorySlug={params.subCategory}>
-        {children}
-      </Shop>
-    </main>
+    <Shop categorySlug={params.category} subCategorySlug={params.subCategory}>
+      {children}
+    </Shop>
   );
 }

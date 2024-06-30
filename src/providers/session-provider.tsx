@@ -8,8 +8,6 @@ export default function SessionProvider({
   children: React.ReactNode;
   session: any;
 }) {
-  sessionStorage.setItem("token", session?.userToken);
-
   return (
     <NextAuthSessionProvider session={session}>
       {children}

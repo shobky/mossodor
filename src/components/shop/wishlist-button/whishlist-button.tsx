@@ -52,7 +52,7 @@ export const WhichLIstButton = ({
       onClick={() => handleWishlist()}
       variant={"outline"}
       size={"icon"}
-      className={`rounded-full scale-75 aspect-square transition-colors `}
+      className={`rounded-full scale-75  aspect-square transition-colors `}
     >
       {status === "loading" ? (
         <Loader2 className="animate-spin" />

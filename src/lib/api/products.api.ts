@@ -61,3 +61,9 @@ export const getPopularProducts = async () => {
   const data = await Fetch(`products/popular/8`);
   return data.products;
 };
+
+  export const gerVariationGroup = async (variationGroupId: string | null) => {
+    if (!variationGroupId) return Promise.resolve({});
+    const data = await Fetch(`variation-groups/${variationGroupId}`);
+    return data.variationGroup;
+  };

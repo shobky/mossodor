@@ -5,7 +5,7 @@ import { Fetch } from "@/lib/actions/fetch";
 export default async function ProfilePage() {
   let user;
   try {
-    const data = await Fetch("/users/me", {}, "secure");
+    const data = await Fetch("users/me", {}, "secure");
     user = data.user;
   } catch (error) {
     console.error(error);
