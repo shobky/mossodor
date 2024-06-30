@@ -3,11 +3,12 @@ import {
   selectProductsSlice,
 } from "@/lib/redux/slices/products/products-slice";
 import { useDispatch, useSelector } from "@/lib/redux/store";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { fetchPaginatedProductsThunk } from "@/lib/redux/slices/products/thunks/fetch-paginated-products-thunk";
 import { useInfiniteScroll } from "../use-infinite-scroll";
 import { useShopControls } from "../use-shop-controls";
 import { fetchFilteredProductsThunk } from "@/lib/redux/slices/products/thunks/fetch-filtered-products-thunk";
+import { debounce } from "lodash";
 
 export const useProducts = (limit?: number) => {
   const {
@@ -20,8 +21,29 @@ export const useProducts = (limit?: number) => {
   const { filters } = useShopControls("q");
   const dispatch = useDispatch();
 
+  const debouncedFetchFilteredData = useMemo(
+    () => debounce(async (filters) => {
+      await dispatch(
+        fetchFilteredProductsThunk({
+          filters: filters,
+          page: 0, // Reset to first page when filters change
+          pageSize: limit ?? 20,
+        })
+      );
+      setPage(1); // Set to 1 for next page fetch
+    }, 300),
+    [dispatch, limit]
+  );
+
   useEffect(() => {
-    const fetchFilteredData = async () => {
+    debouncedFetchFilteredData(filters);
+    return () => debouncedFetchFilteredData.cancel();
+  }, [filters, debouncedFetchFilteredData]);
+
+  const fetchMoreData = async () => {
+    if (totalProducts && products.length >= totalProducts) return;
+
+    if (filters.length > 0) {
       await dispatch(
         fetchFilteredProductsThunk({
           filters: filters,
@@ -29,20 +51,14 @@ export const useProducts = (limit?: number) => {
           pageSize: limit ?? 20,
         })
       );
-    };
-    fetchFilteredData();
-  }, [filters]);
-
-  const fetchMoreData = async () => {
-    if (totalProducts && products.length >= totalProducts) return; // All data has been fetched
-    if (filters.length > 0) return; // All products with this filter has been fetched
-
-    await dispatch(
-      fetchPaginatedProductsThunk({
-        page,
-        pageSize: limit ?? 20,
-      })
-    );
+    } else {
+      await dispatch(
+        fetchPaginatedProductsThunk({
+          page,
+          pageSize: limit ?? 20,
+        })
+      );
+    }
     setPage(page + 1);
   };
 

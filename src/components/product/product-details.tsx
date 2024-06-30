@@ -1,36 +1,25 @@
-"use client";
-import React, { useEffect } from "react";
+"use client"
 import ProductImages from "./product-images";
 import ProductInfo from "./product-info";
-import { IProduct, IVariationGroup } from "@/lib/types";
+import { IProduct } from "@/lib/types";
 import ProductDimentions from "./details/product-dimentions";
 import ProductSpecifications from "./details/product-specifications";
 import { useSelector } from "react-redux";
-import { State, useDispatch } from "@/lib/redux/store";
+import { State } from "@/lib/redux/store";
 import { mergeProductWithVariation } from "@/lib/utils/merge-specifications";
-import { selectedVariationsSlice } from "@/lib/redux/slices/selected-variations/selected-variation-slice";
 
 export default function ProductDetails({
   product,
   children,
-  variations,
 }: {
   product: IProduct;
   children: React.ReactNode[];
-  variations: IVariationGroup["variations"];
 }) {
   const selectedVariation = useSelector(
     (state: State) => state.selectedVariations.selectedVariation
   );
   const mergedProduct = mergeProductWithVariation(product, selectedVariation);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(
-      selectedVariationsSlice.actions.setDefaultVariation(variations[0])
-    );
-  }, [variations]);
-  
   return (
     <>
       <ProductImages

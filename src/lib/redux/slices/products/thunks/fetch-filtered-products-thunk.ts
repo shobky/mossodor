@@ -30,9 +30,15 @@ export const fetchFilteredProductsReducers = (
     })
     .addCase(fetchFilteredProductsThunk.fulfilled, (state, action) => {
       state.status = "succeeded";
-      console.log(action.payload);
-      state.products = action.payload;
-      state.totalProducts = action.payload?.length ?? 0;
+      if (action.meta.arg.page === 0) {
+        state.products = action.payload;
+      } else {
+        const newProducts = action.payload.filter((product) => {
+          return !state.products.some((p) => p._id === product._id);
+        });
+        state.products = [...state.products, ...newProducts];
+      }
+      state.totalProducts = action.payload.length;
     })
     .addCase(fetchFilteredProductsThunk.rejected, (state, action) => {
       state.status = "failed";

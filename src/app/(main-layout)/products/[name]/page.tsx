@@ -57,17 +57,19 @@ export default async function ProductsPage({ params: { name } }: Props) {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <Padding>
-      <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[5vh]">
-        <ProductDetails
-          product={product}
-          variations={variationGroup?.variations || []}
-        >
-          <ProductVariationSelector variationGroup={variationGroup} />
-          <ProductFaqs _id={product._id} />
-        </ProductDetails>
-      </div>
-      <SimilarProducts product={product} />
-    </Padding>
+    <>
+      <hr />
+      <Padding>
+        <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[5vh]">
+          <ProductDetails product={product}>
+            <ProductVariationSelector variationGroup={variationGroup} />
+            <ProductFaqs _id={product._id} />
+          </ProductDetails>
+        </div>
+        <div className="sm:mx-[7.5vw] ">
+          <SimilarProducts product={product} />
+        </div>
+      </Padding>
+    </>
   );
 }

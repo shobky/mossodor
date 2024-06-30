@@ -15,11 +15,11 @@ export default async function SimilarProducts({
   }
 
   return (
-    <div className=" py-10 sm:p-20 space-y-4 ">
+    <div className="py-10 space-y-4 ">
       <p className="text-center text-xl font-medium">
         Similar Products to {product.name}
       </p>
-      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 xl:grid-cols-4  sm:mx-[7.5vw] ">
+      <div className="grid gap-4 grid-cols-2 sm:grid-cols-3 xl:grid-cols-4">
         {products
           ?.filter((p) => p._id !== product._id)
           .slice(0, 6)

@@ -33,7 +33,6 @@ export default async function PhotoModal({ params: { name } }: Props) {
       <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[4vh] ">
         <ProductDetails
           product={product}
-          variations={variationGroup?.variations || []}
         >
           <ProductVariationSelector variationGroup={variationGroup} />
           <ProductFaqs _id={product._id} />

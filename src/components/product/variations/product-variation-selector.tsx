@@ -1,7 +1,10 @@
-"use client"
+"use client";
 import { IVariationGroup } from "@/lib/types";
 import VariationSelectButton from "./variation-select-button";
 import { State, useSelector } from "@/lib/redux/store";
+import { useDispatch } from "react-redux";
+import { selectedVariationsSlice } from "@/lib/redux/slices/selected-variations/selected-variation-slice";
+import { useEffect } from "react";
 
 export const ProductVariationSelector = async ({
   variationGroup,
@@ -9,10 +12,26 @@ export const ProductVariationSelector = async ({
   variationGroup: IVariationGroup | null;
 }) => {
   // Group variations by name
-  const disabledSelectors = useSelector((state: State) => state.selectedVariations.disabledSelectors);
+  const disabledSelectors = useSelector(
+    (state: State) => state.selectedVariations.disabledSelectors
+  );
   const variationSelectors = variationGroup?.selectors;
 
-  if (!variationSelectors || Object.keys(variationSelectors)?.length === 0)
+  const dispatch = useDispatch();
+  const variations = variationGroup?.variations;
+
+  useEffect(() => {
+    if (!variations) return;
+    dispatch(
+      selectedVariationsSlice.actions.setDefaultVariation(variations[0])
+    );
+  }, [variations]);
+
+  if (
+    !variationSelectors ||
+    Object.keys(variationSelectors)?.length === 0 ||
+    !variationGroup
+  )
     return null;
 
   return (
