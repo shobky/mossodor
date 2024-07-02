@@ -17,7 +17,7 @@ export const getFilteredProducts = async (
   filters?: any,
   page?: number,
   pageSize?: number
-): Promise<IProduct[]> => {
+): Promise<{products:IProduct[], count:number}> => {
   const data = await Fetch(
     `products/categories/${category_slug}/${subCategory_slug}?page=${page}&pageSize=${pageSize}`,
     {
@@ -26,7 +26,7 @@ export const getFilteredProducts = async (
       cache: "no-cache",
     }
   );
-  return data.products;
+  return data;
 };
 
 export const searchProductByName = async (

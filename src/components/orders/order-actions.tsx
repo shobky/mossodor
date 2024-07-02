@@ -11,10 +11,17 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ArrowUpRight, CircleX, MapPin, MoreHorizontal } from "lucide-react";
+import {
+  ArrowUpRight,
+  CircleX,
+  Copy,
+  MapPin,
+  MoreHorizontal,
+} from "lucide-react";
 import { IOrder } from "@/lib/types";
 import Link from "next/link";
 import { CancelOrderDialog } from "./cancel-order-dialog";
+import { toast } from "sonner";
 
 export function OrderActions({
   order,
@@ -32,7 +39,20 @@ export function OrderActions({
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-40">
         <DropdownMenuLabel>Order Actions</DropdownMenuLabel>
-
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          className="w-full justify-between"
+          onClick={() =>
+            navigator.clipboard
+              .writeText(order._id || "")
+              .then(() => toast.info(`Copied order number | ${order._id}`))
+              .catch((err) =>
+                toast.error(`Can't copy  number for order ${order._id}`)
+              )
+          }
+        >
+          Copy order number <Copy size={18} />
+        </DropdownMenuItem>
         {!open && (
           <>
             <DropdownMenuSeparator />
@@ -44,7 +64,12 @@ export function OrderActions({
           </>
         )}
         <DropdownMenuSeparator />
-        <CancelOrderDialog disabled={true} order={order} />
+        <CancelOrderDialog
+          disabled={
+            order.status !== "awaiting pickup" && order.status !== "pending"
+          }
+          order={order}
+        />
         <DropdownMenuSeparator />
 
         <DropdownMenuItem className="w-full justify-between" disabled={true}>

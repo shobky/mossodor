@@ -61,27 +61,44 @@ export interface IAddress {
   postal_code: string | undefined;
   state: string | undefined;
 }
+
 export interface IOrderItem {
-  product_id: String;
+  product_id: string | IProduct;
+  product?: IProduct;
   quantity: number;
 }
+
+export type TOrderStatus =
+  | "pending"
+  | "awaiting fulfillment"
+  | "awaiting shipment"
+  | "awaiting pickup"
+  | "shipped"
+  | "delivered"
+  | "cancelled"
+  | "refunded"
+  | "refunded with return";
 
 export interface IOrder {
   _id: any;
   subtotal: number;
   total: number;
+  shipping?: number;
   items: IOrderItem[];
-  status: string | null;
+  status: TOrderStatus;
   paymentStatus: string | null;
-  trackingNumber: string | undefined;
-  carrierName: string | undefined;
-  shippingRate: string | undefined;
-  shippingMethod: string | undefined;
-  shippingPrice: number | undefined;
+  trackingNumber?: string;
+  carrierName?: string;
+  buyerName: string | undefined;
+  buyerEmail: string | undefined;
+  buyerPhone: string | undefined;
+  shippingRate?: string;
+  shippingMethod?: string;
   purchaseDate: number;
   currencyCode: string;
   address: IAddress;
-  user_id: string;
+  user_id: string | IUser;
+  discount: number;
 }
 
 export interface IVariationGroup {

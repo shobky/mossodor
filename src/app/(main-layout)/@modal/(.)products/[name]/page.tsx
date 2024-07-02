@@ -31,10 +31,11 @@ export default async function PhotoModal({ params: { name } }: Props) {
   return (
     <OpenedDrawer>
       <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[4vh] ">
-        <ProductDetails
-          product={product}
-        >
-          <ProductVariationSelector variationGroup={variationGroup} />
+        <ProductDetails variationGroup={variationGroup} product={product}>
+          <ProductVariationSelector
+            product={product}
+            variationGroup={variationGroup}
+          />
           <ProductFaqs _id={product._id} />
         </ProductDetails>
       </div>

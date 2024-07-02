@@ -13,11 +13,13 @@ const VariationSelectButton = React.memo(
     variationName,
     variationGroup,
     disabledValues,
+    product,
   }: {
     variationValues: string[];
     variationName: string;
     variationGroup: IVariationGroup | null;
     disabledValues: string[];
+    product: any;
   }) => {
     const { selectedVariationSelectors } = useSelector(
       (state: State) => state.selectedVariations
@@ -30,6 +32,7 @@ const VariationSelectButton = React.memo(
           selectedVariationsSlice.actions.selectVariation({
             newSelector,
             variationGroup,
+            product
           })
         );
       },
@@ -39,7 +42,10 @@ const VariationSelectButton = React.memo(
     const handleUnselectVariation = useCallback(
       (variationValue: { type: string; value: string }) => {
         dispatch(
-          selectedVariationsSlice.actions.unselectVariation(variationValue)
+          selectedVariationsSlice.actions.unselectVariation({
+            type: variationValue.type,
+            value: variationValue.value,
+          })
         );
       },
       [dispatch]
@@ -75,20 +81,11 @@ const VariationSelectButton = React.memo(
               })
             }
             key={value}
-            className={`border-dashed gap-2 items-center  ease-in-out duration-200 overflow-hidden ${
-              isSelected && ""
+            className={`border-dashed gap-2 items-center font-medium rounded-full ease-in-out duration-200 overflow-hidden ${
+              isSelected && "text-black font-bold"
             }`}
             variant={isSelected ? "default" : "outline"}
           >
-            {
-              <Check
-                size={15}
-                strokeWidth={2}
-                className={`${
-                  isSelected ? "-ml-0" : " -ml-6"
-                } relative ease-in-out duration-200 text-white`}
-              />
-            }
             {value}
           </Button>
         );

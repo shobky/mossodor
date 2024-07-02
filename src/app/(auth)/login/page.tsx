@@ -12,6 +12,7 @@ import { Loader2 } from "lucide-react";
 import { signIn } from "next-auth/react";
 import { z } from "zod";
 import BackButton from "@/components/auth/back-button";
+import { PasswordInput } from "@/components/shared/password-input";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -82,7 +83,7 @@ export default function LoginPage() {
               </p>
             )}
           </div>
-          <form onSubmit={login} className="grid gap-4">
+          <form onSubmit={login} className="grid gap-4 p-4 sm:p-0">
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
@@ -104,11 +105,9 @@ export default function LoginPage() {
                   Forgot your password?
                 </Link>
               </div>
-              <Input
+              <PasswordInput
                 autoFocus={email ? true : false}
                 id="password"
-                type="password"
-                name="password"
                 required
               />
             </div>

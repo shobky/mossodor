@@ -2,14 +2,13 @@
 import { IVariationGroup } from "@/lib/types";
 import VariationSelectButton from "./variation-select-button";
 import { State, useSelector } from "@/lib/redux/store";
-import { useDispatch } from "react-redux";
-import { selectedVariationsSlice } from "@/lib/redux/slices/selected-variations/selected-variation-slice";
-import { useEffect } from "react";
 
-export const ProductVariationSelector = async ({
+export const ProductVariationSelector = ({
   variationGroup,
+  product
 }: {
   variationGroup: IVariationGroup | null;
+  product: any;
 }) => {
   // Group variations by name
   const disabledSelectors = useSelector(
@@ -17,16 +16,7 @@ export const ProductVariationSelector = async ({
   );
   const variationSelectors = variationGroup?.selectors;
 
-  const dispatch = useDispatch();
-  const variations = variationGroup?.variations;
-
-  useEffect(() => {
-    if (!variations) return;
-    dispatch(
-      selectedVariationsSlice.actions.setDefaultVariation(variations[0])
-    );
-  }, [variations]);
-
+  console.log(variationSelectors, variationGroup);
   if (
     !variationSelectors ||
     Object.keys(variationSelectors)?.length === 0 ||
@@ -36,15 +26,16 @@ export const ProductVariationSelector = async ({
 
   return (
     <div className="space-y-2">
-      {Object.keys(variationSelectors).map((variationName) => (
-        <div key={variationName} className="flex flex-wrap gap-2">
+      {Object.keys(variationSelectors)?.map((variationName) => (
+        <div key={variationName} className="flex flex-wrap gap-1">
           <p
             key={variationName}
-            className="border-dashed pointer-events-none cursor-default bg-secondary text-secondary-foreground/50 font-medium rounded-xl h-10 px-4 py-2"
+            className="border-dashed pointer-events-none cursor-default  bg-secondary text-secondary-foreground/50 font-medium rounded-full h-10 px-4 py-2"
           >
             {variationName.trim()}s
           </p>
           <VariationSelectButton
+          product={product}
             variationGroup={variationGroup}
             variationValues={variationSelectors[variationName]}
             variationName={variationName}

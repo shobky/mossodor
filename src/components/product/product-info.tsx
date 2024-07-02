@@ -1,5 +1,5 @@
-import { IProduct } from "@/lib/types";
-import React, { ReactNode, Suspense } from "react";
+import { IProduct, IVariationGroup } from "@/lib/types";
+import React, { Suspense } from "react";
 import WishlistContainer from "./wishlist-container";
 import BuyButton from "../shared/buy-button";
 import CartButtonContainer from "../shop/products/cart-button/cart-button-container";
@@ -8,10 +8,10 @@ import { ProductVariationSelector } from "./variations/product-variation-selecto
 
 export default function ProductInfo({
   product,
-  children,
+  variationGroup,
 }: {
   product: IProduct;
-  children: ReactNode;
+  variationGroup: IVariationGroup | null;
 }) {
   return (
     <div className="space-y-4">
@@ -22,7 +22,7 @@ export default function ProductInfo({
         <WishlistContainer product={product} />
       </section>
       <div className="space-y-4">
-        <h1 className="text-4xl font-bold ">{product.name}</h1>
+        <p className="text-4xl font-bold ">{product.name}</p>
         <p className="text-3xl font-bold">£{product.price}</p>
         <h2 className="text-secondary-foreground  leading-[1.3rem] w-[85%] ">
           {product.description}
@@ -35,7 +35,7 @@ export default function ProductInfo({
             </p>
           }
         >
-          {children}
+          <ProductVariationSelector variationGroup={variationGroup} product={product} />
         </Suspense>
         <section className="flex gap-2">
           <CartButtonContainer render="button" product={product} />

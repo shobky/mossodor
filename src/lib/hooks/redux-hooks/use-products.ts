@@ -9,6 +9,7 @@ import { useInfiniteScroll } from "../use-infinite-scroll";
 import { useShopControls } from "../use-shop-controls";
 import { fetchFilteredProductsThunk } from "@/lib/redux/slices/products/thunks/fetch-filtered-products-thunk";
 import { debounce } from "lodash";
+import { fetchProductByNameThunk } from "@/lib/redux/slices/products/thunks/fetch-product-by-name";
 
 export const useProducts = (limit?: number) => {
   const {
@@ -18,20 +19,26 @@ export const useProducts = (limit?: number) => {
   } = useSelector(selectProductsSlice);
 
   const [page, setPage] = useState(0);
-  const { filters } = useShopControls("q");
+  const { filters, query } = useShopControls("q");
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if (query === "") return;
+    dispatch(fetchProductByNameThunk(query));
+  }, [query, dispatch]);
+
   const debouncedFetchFilteredData = useMemo(
-    () => debounce(async (filters) => {
-      await dispatch(
-        fetchFilteredProductsThunk({
-          filters: filters,
-          page: 0, // Reset to first page when filters change
-          pageSize: limit ?? 20,
-        })
-      );
-      setPage(1); // Set to 1 for next page fetch
-    }, 300),
+    () =>
+      debounce(async (filters) => {
+        await dispatch(
+          fetchFilteredProductsThunk({
+            filters: filters,
+            page: 0, // Reset to first page when filters change
+            pageSize: limit ?? 20,
+          })
+        );
+        setPage(1); // Set to 1 for next page fetch
+      }, 300),
     [dispatch, limit]
   );
 
@@ -41,7 +48,7 @@ export const useProducts = (limit?: number) => {
   }, [filters, debouncedFetchFilteredData]);
 
   const fetchMoreData = async () => {
-    if (totalProducts && products.length >= totalProducts) return;
+    if (totalProducts === products.length) return;
 
     if (filters.length > 0) {
       await dispatch(
@@ -71,5 +78,5 @@ export const useProducts = (limit?: number) => {
     }
   }, [productsStatus, dispatch]);
 
-  return { products, loading, isFetching, productsStatus };
+  return { products, loading, isFetching, productsStatus, totalProducts };
 };

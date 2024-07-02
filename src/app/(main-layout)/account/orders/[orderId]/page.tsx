@@ -14,6 +14,7 @@ import Link from "next/link";
 import ClearCartOnSuccessfulOrder from "./clearCartOnSuccessfulOrder";
 import { format } from "date-fns";
 import { OrderActions } from "@/components/orders/order-actions";
+import { sendOrderConfirmationEmail } from "@/lib/utils/send-email";
 
 export default async function OrderConfirmationPage({
   params,
@@ -34,21 +35,22 @@ export default async function OrderConfirmationPage({
         </Link>
       </Padding>
     );
+  await sendOrderConfirmationEmail(order.buyerEmail, order);
   return (
     <div className="space-y-4 ">
       {/*Clears the cart in a useEffect */}
       <ClearCartOnSuccessfulOrder success={order._id ? true : false} />
       <section className="px-1">
-        <div className="flex justify-between items-center ">
+        <div className="flex flex-col sm:flex-row justify-between items-center ">
           <h1>
             <strong>Order</strong>#{order._id}
           </h1>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-4 sm:gap-2">
             <p>{format(new Date(order.purchaseDate), "PPPP")}</p>
             <OrderActions open={true} order={order} />
           </div>
         </div>
-        <p className="text-sm text-muted-foreground">{order.buyerEmail}</p>
+        <p className="text-sm text-muted-foreground text-center sm:text-left">{order.buyerEmail}</p>
       </section>
       <div className="sm:flex sm:gap-4">
         <div className="flex-1 w-full flex  justify-between flex-col-reverse sm:flex-col gap-4 mb-4 sm:mb-0 ">
@@ -61,7 +63,7 @@ export default async function OrderConfirmationPage({
                 <CornerDownRight size={20} className="scale-75" />
                 <p className="w-full flex items-center justify-between">
                   <span>{order.shippingMethod}</span>
-                  <span>est. 2-3 days</span>
+                  <span>Est. 2-3 days</span>
                 </p>
               </div>
             </div>
@@ -87,7 +89,9 @@ export default async function OrderConfirmationPage({
           <section className="w-full flex  items-center gap-2 ">
             <Button
               disabled={true}
-              className={`bg-foreground text-background w-full h-16 ${true ? "text-sm" :"text-xl"}`}
+              className={`bg-foreground text-background w-full h-16 ${
+                true ? "text-sm" : "text-xl"
+              }`}
               size={"lg"}
             >
               {true ? "You can track your order soon" : "Track Order"}
@@ -123,7 +127,7 @@ export default async function OrderConfirmationPage({
                       key={product._id}
                       className="flex gap-4 items-start w-full p-2"
                     >
-                      <div className="bg-green-100 rounded-md  w-14 h-14 p-1 flex-shrink-0">
+                      <div className="bg-transparent border-2 border-dashed  rounded-md  w-24 h-24 p-2 flex-shrink-0">
                         <Image
                           width={200}
                           height={200}
@@ -132,15 +136,13 @@ export default async function OrderConfirmationPage({
                           className="w-full h-full"
                         />
                       </div>
-                      <div className="sm:flex items-start justify-between w-full">
-                        <div>
-                          <p className="font-semibold">{product.name}</p>
-                          <p className="text-muted-foreground text-sm font-medium">
-                            Qty: {item.quantity}
-                          </p>
-                        </div>
-                        <p className="font-semibold">
+                      <div>
+                        <p className="font-semibold text-lg leading-6">{product.name}</p>
+                        <p className="text-lg font-medium">
                           £{Number(product.price) * Number(item.quantity)}
+                        </p>
+                        <p className="text-muted-foreground text-sm font-medium">
+                          Quantity {`[${item.quantity}]`}
                         </p>
                       </div>
                     </div>

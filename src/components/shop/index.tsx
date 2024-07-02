@@ -17,7 +17,7 @@ export default function Shop({
         <ShopBanner />
       </div>
 
-      <div className="grid gap-0 lg:gap-[calc(1.5rem+1vw)] lg:flex bg-background lg:mx-[1vw]  -mt-[calc(2rem+2.5vh)] rounded-t-xl lg:rounded-xl p-6 lg:p-14 z-10 ">
+      <div className="grid gap-0 lg:gap-[calc(1.5rem+1vw)] lg:flex bg-background ease-in-out duration-300 h-full lg:mx-[1vw] -mt-[calc(2rem+2.5vh)] rounded-t-xl lg:rounded-xl p-6 lg:p-14 z-10 ">
         <ShopControls
           categorySlug={categorySlug}
           subCategorySlug={subCategorySlug}

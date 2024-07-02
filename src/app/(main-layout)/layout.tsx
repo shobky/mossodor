@@ -9,10 +9,12 @@ export default function MainLayout(props: {
   return (
     <div className="">
       <HeaderProvider>
-        <Header />
+      <Header />
       </HeaderProvider>
+      <div className="min-h-[70vh]">
       {props.children}
       {props.modal}
+      </div>
       <Footer />
     </div>
   );

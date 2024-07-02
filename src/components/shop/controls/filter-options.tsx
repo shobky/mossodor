@@ -37,10 +37,10 @@ export const FilterOptions = ({
 
   return (
     <div className="py-3 space-y-4 border shadow-md sm:shadow-none sm:border-none bg-background rounded-xl ">
-      <p className="flex items-center justify-between px-3 text-lg font-semibold ">
-        Filters
+      <div className="flex items-center justify-between px-3 ">
+        <p className="text-lg font-semibold ">Filters</p>
         <ResetFilters />
-      </p>
+      </div>
       <div className="gap-4">
         {options.map((option) => (
           <div key={option.name}>

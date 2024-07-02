@@ -7,7 +7,6 @@ import MobileFilterContainer from "./mobile-filter-container";
 import { Button } from "@/components/ui/button";
 import { SlidersHorizontal } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { sub } from "date-fns";
 
 export default function ShopControls({
   categorySlug,

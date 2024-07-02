@@ -5,7 +5,7 @@ import {
   selectFilters,
 } from "@/lib/redux/slices/products/products-slice";
 import { useDispatch, useSelector } from "@/lib/redux/store";
-import { ListRestart, SlidersHorizontal } from "lucide-react";
+import { ListRestart, RotateCcw, SlidersHorizontal } from "lucide-react";
 
 export const ResetFilters = () => {
   const filters = useSelector(selectFilters);
@@ -13,8 +13,12 @@ export const ResetFilters = () => {
   return (
     <div>
       {filters.length > 0 ? (
-        <button onClick={() => dispatch(productsSlice.actions.resetFilters())}>
-          <ListRestart size={18} />
+        <button
+          className="text-sm flex gap-1 items-center"
+          onClick={() => dispatch(productsSlice.actions.resetFilters())}
+        >
+          <RotateCcw size={20} strokeWidth={2.2} /> 
+          <span className="sr-only">Reset</span>
         </button>
       ) : (
         <SlidersHorizontal className="hidden lg:block" size={18} />

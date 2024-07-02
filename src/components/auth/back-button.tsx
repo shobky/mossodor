@@ -13,7 +13,7 @@ export default function BackButton({ href }: { href: string | null }) {
       }}
       variant={"ghost"}
       size={"icon"}
-      className="absolute left-0 top-0 m-10"
+      className="absolute left-0 top-0 m-4 sm:m-10"
     >
       <ArrowLeft />
     </Button>

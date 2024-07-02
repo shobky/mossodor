@@ -11,10 +11,10 @@ export default function OrderCard({ order }: { order: IOrder }) {
   return (
     <div className="p-6 border border-dashed bg-secondary/40 rounded-xl   ">
       <div className="flex items-center justify-between text-secondary-foreground">
-        <p>{format(new Date(order.purchaseDate), "PPPP")}</p>
+        <p className="text-sm sm:text-base">{format(new Date(order.purchaseDate), "PPPP")}</p>
         <div className="flex gap-2">
           <OrderActions order={order} />
-          <Link href={`/acount/orders/${order._id}`}>
+          <Link href={`/account/orders/${order._id}`}>
             <Button variant={"ghost"} size={"icon"}>
               <ArrowUpRight size={20} />
             </Button>
@@ -22,15 +22,15 @@ export default function OrderCard({ order }: { order: IOrder }) {
         </div>
       </div>
       <br />
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <section className="space-y-2">
           <p className="font-bold text-2xl">
             £{parseFloat(String(order.total / 100)).toFixed(2)}
           </p>
           <div className="flex items-center gap-4">
             <div
-              className={`w-fit py-1 px-2 text-sm rounded-lg border border-dashed ${
-                order.status === "complete"
+              className={`w-fit py-1 px-2 text-sm rounded-lg border border-dashed capitalize ${
+                order.status === "shipped"
                   ? "bg-green-200/50 dark:bg-green-900/70 text-green-500 border-green-500 "
                   : "bg-secondary"
               }`}
@@ -38,7 +38,7 @@ export default function OrderCard({ order }: { order: IOrder }) {
               <p>{order.status}</p>
             </div>
             <div
-              className={`w-fit py-1 px-2 text-sm rounded-lg border border-dashed ${
+              className={`w-fit py-1 px-2 text-sm rounded-lg border border-dashed capitalize${
                 order.paymentStatus === "paid"
                   ? "bg-orange-300/50 dark:bg-orange-900/70 text-orange-400   border-orange-400  "
                   : "bg-secondary"
@@ -47,7 +47,7 @@ export default function OrderCard({ order }: { order: IOrder }) {
               <p>{order.paymentStatus}</p>
             </div>
             <div
-              className={`w-fit py-1 px-2 text-sm rounded-lg border border-dashed bg-secondary border-secondary-foreground text-secondary-foreground `}
+              className={`w-fit py-1 px-2 text-sm rounded-lg border border-dashed capitalize   bg-secondary border-secondary-foreground text-secondary-foreground `}
             >
               <p>{order.shippingMethod}</p>
             </div>

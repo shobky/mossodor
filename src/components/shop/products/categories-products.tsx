@@ -12,7 +12,8 @@ export const CategoriesProducts = async ({
 }) => {
   let products: IProduct[] = [];
   try {
-    products = await getFilteredProducts(category, subCategory);
+    const { products: data } = await getFilteredProducts(category, subCategory);
+    products = data;
   } catch (err: any) {
     console.log(err);
   }

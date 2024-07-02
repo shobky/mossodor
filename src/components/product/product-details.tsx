@@ -1,19 +1,21 @@
-"use client"
+"use client";
 import ProductImages from "./product-images";
-import ProductInfo from "./product-info";
-import { IProduct } from "@/lib/types";
+import { IProduct, IVariationGroup } from "@/lib/types";
 import ProductDimentions from "./details/product-dimentions";
 import ProductSpecifications from "./details/product-specifications";
 import { useSelector } from "react-redux";
 import { State } from "@/lib/redux/store";
 import { mergeProductWithVariation } from "@/lib/utils/merge-specifications";
+import ProductInfo from "./product-info";
 
 export default function ProductDetails({
   product,
   children,
+  variationGroup,
 }: {
   product: IProduct;
-  children: React.ReactNode[];
+  children: React.ReactNode;
+  variationGroup: IVariationGroup | null;
 }) {
   const selectedVariation = useSelector(
     (state: State) => state.selectedVariations.selectedVariation
@@ -28,12 +30,12 @@ export default function ProductDetails({
         thumbnail={mergedProduct.thumpnail}
       />
       <div className="space-y-10">
-        <ProductInfo product={mergedProduct}>{children[0]}</ProductInfo>
+        <ProductInfo product={mergedProduct} variationGroup={variationGroup} />
         <ProductDimentions product={mergedProduct} />
         <ProductSpecifications
           specifications={mergedProduct.otherSpecifications}
         />
-        {children[1]}
+        {children}
       </div>
     </>
   );

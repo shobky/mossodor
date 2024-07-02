@@ -1,7 +1,6 @@
 import { Padding } from "@/components/page-layout";
 import { ProductFaqs } from "@/components/product/details/product-faqs";
 import ProductDetails from "@/components/product/product-details";
-import { ProductVariationSelector } from "@/components/product/variations/product-variation-selector";
 import SimilarProducts from "@/components/product/similar-products";
 import { gerVariationGroup, getProductByName } from "@/lib/api/products.api";
 import { IVariationGroup } from "@/lib/types";
@@ -54,15 +53,19 @@ export default async function ProductsPage({ params: { name } }: Props) {
     console.log(error);
   }
 
-  if (!product) return <div>Product not found</div>;
+  if (!product)
+    return (
+      <div className="grid w-screen min-h-[70vh] place-content-center font-medium text-muted-foreground">
+        Product not found
+      </div>
+    );
 
   return (
     <>
       <hr />
       <Padding>
         <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[5vh]">
-          <ProductDetails product={product}>
-            <ProductVariationSelector variationGroup={variationGroup} />
+          <ProductDetails variationGroup={variationGroup} product={product}>
             <ProductFaqs _id={product._id} />
           </ProductDetails>
         </div>

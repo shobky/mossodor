@@ -112,7 +112,7 @@ export default function SignupPage() {
     <div className="w-full items-center h-screen grid lg:grid-cols-2">
       <BackButton href={cb} />
       <div className="flex items-center justify-center py-12">
-        <div className="mx-auto grid w-[350px] gap-6">
+        <div className="mx-auto grid w-[350px] gap-2  sm:gap-6">
           <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold">Create Account</h1>
             {error ? (
@@ -123,7 +123,7 @@ export default function SignupPage() {
               </p>
             )}
           </div>
-          <form onSubmit={signup} className="grid gap-4">
+          <form onSubmit={signup} className="grid gap-4 p-4 sm:-0">
             <div className="grid gap-2">
               <Label htmlFor="name">Name</Label>
               <Input

@@ -42,9 +42,9 @@ export default function DesktopCategoryItem({
                       <p className="text-sm text-nowrap font-medium leading-none">
                         {child.name}
                       </p>
-                      <p className="line-clamp-2 text-xs leading-snug text-opacity-80">
+                      {/* <p className="line-clamp-2 text-xs leading-snug text-opacity-80">
                         Starting from $133
-                      </p>
+                      </p> */}
                     </div>
                   </Link>
                 </NavigationMenuLink>
