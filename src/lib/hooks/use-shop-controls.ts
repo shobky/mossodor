@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQueryParams } from "./use-query-params";
 import { useDispatch, useSelector } from "../redux/store";
 import {
@@ -13,13 +13,24 @@ export const useShopControls = (
 ) => {
   const { getParam } = useQueryParams();
   const queryParam = getParam(queryKey) || "";
+  const urlFiltersParam = getParam("f");
+
   const filters = useSelector(selectFilters);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const urlFilters = JSON.parse(urlFiltersParam || "[]");
+    if (urlFilters.length > 0) {
+      dispatch(productsSlice.actions.setFilters(urlFilters));
+    }
+  }, [urlFiltersParam]);
+
   const handleFilters = (name: string, value: string) => {
     let newFilters = filters.map((filter) => ({ ...filter })); // Create a deep copy of filters
-    const index = newFilters.findIndex((f) => f.name.replace(" ", "_") === name.replace(" ", "_"));
-  
+    const index = newFilters.findIndex(
+      (f) => f.name.replace(" ", "_") === name.replace(" ", "_")
+    );
+
     if (index === -1) {
       // If the filter name doesn't exist, add a new filter with the value
       newFilters.push({ name, value: [value] });
@@ -27,7 +38,9 @@ export const useShopControls = (
       const valueExists = newFilters[index].value.includes(value);
       if (valueExists) {
         // If the value exists, remove it from the filter
-        newFilters[index].value = newFilters[index].value.filter((v) => v !== value);
+        newFilters[index].value = newFilters[index].value.filter(
+          (v) => v !== value
+        );
         // If the filter has no more values, remove the entire filter
         if (newFilters[index].value.length === 0) {
           newFilters.splice(index, 1);
@@ -37,7 +50,7 @@ export const useShopControls = (
         newFilters[index].value = [...newFilters[index].value, value];
       }
     }
-  
+
     // Dispatch the updated filters
     dispatch(productsSlice.actions.setFilters(newFilters));
   };

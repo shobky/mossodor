@@ -52,12 +52,12 @@ export default async function CategoryPage({
   return (
     <Padding className="min-h-[95vh] grid place-content-center gap-20 py-[8vh]">
       <div className="w-full h-[var(--header-height)] bg-foreground  rounded-b-[40px] sm:rounded-b-[80px]  dark:bg-background absolute top-0 left-0" />
-      <section className="mx-[12.5vw] space-y-4">
-        <h1 className="text-3xl font-semibold text-center capitalize">
-          {category?.name}
+      <section className="sm:mx-[12.5vw] space-y-4">
+        <h1 className=" text-2xl sm:text-3xl font-medium sm:font-semibold text-center capitalize">
+          {category?.name} Collection
         </h1>
         <h2 className="text-base text-center">{category?.description}</h2>
-        <div className="grid grid-cols-4 justify-center items-center gap-x-10 gap-y-4 ">
+        <div className="grid grid-cols-2 sm:grid-cols-4 justify-center items-start gap-x-4 sm:gap-x-10 gap-y-4 ">
           {children?.map((child: any) => (
             <Link
               key={child._id}

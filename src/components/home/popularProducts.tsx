@@ -11,6 +11,7 @@ export default async function PopularProducts() {
   let products:IProduct[] = [];
   try {
     products = await getPopularProducts();
+    console.log(products, "Jo")
   } catch (err: any) {
     console.log(err);
   }
@@ -20,13 +21,13 @@ export default async function PopularProducts() {
         <SectionTitle>
           Popular Products <Sparkles />
         </SectionTitle>
-        <div className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-between gap-6">
+        <div className="grid w-full grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start justify-between gap-6">
           {products.map((product, index) => (
             <ProductCard key={index} product={product} />
           ))}
         </div>
         <Link
-          href="/"
+          href="/shop"
           className=" font-medium flex items-center gap-1  text-muted-foreground"
         >
           Continue Shopping{" "}

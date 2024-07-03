@@ -25,11 +25,10 @@ export const FilterOptions = ({
     {
       name: "Style",
       value: [
-        "Modern",
-        "Classic",
         "Industrial",
+        "Luxury",
+        "Rattan",
         "Scandinavian",
-        "Retro",
         "Vintage",
       ],
     },

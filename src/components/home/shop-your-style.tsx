@@ -4,8 +4,10 @@ import { Padding } from "@/components/page-layout";
 import Image from "next/image";
 import { Paintbrush } from "lucide-react";
 import { ScrollBar, ScrollArea } from "../ui/scroll-area";
+import Link from "next/link";
 
 export default function ShoPYourStyle() {
+
   const styles = [
     {
       title: "Industrial",
@@ -44,21 +46,28 @@ export default function ShoPYourStyle() {
       <ScrollArea>
         <ul className="grid grid-cols-5 gap-1 w-[270vw] md:w-auto md:mx-[10vw] relative  p-12">
           {styles.map((style) => (
-            <li key={style.title} className="relative group ">
-              <div className="overflow-hidden   h-[90%]">
-                <Image
-                  key={style.title}
-                  alt={style.title}
-                  width={200}
-                  height={300}
-                  src={style.image}
-                  className=" w-full h-full brightness-90 group-hover:brightness-100 transition-all duration-300 ease-in-out rounded-[30px] "
-                />
-              </div>
-              <p className=" font-semibold text-lg  z-20 text-center mt-2 ">
-                {style.title}
-              </p>
-            </li>
+            <Link
+              href={`/shop?f=${JSON.stringify([
+                { name: "Style", value: [style.title] },
+              ])}`}
+              key={style.title}
+            >
+              <li className="relative group ">
+                <div className="overflow-hidden   h-[90%]">
+                  <Image
+                    key={style.title}
+                    alt={style.title}
+                    width={200}
+                    height={300}
+                    src={style.image}
+                    className=" w-full h-full brightness-90 group-hover:brightness-100 transition-all duration-300 ease-in-out rounded-[30px] "
+                  />
+                </div>
+                <p className=" font-semibold text-lg  z-20 text-center mt-2 ">
+                  {style.title}
+                </p>
+              </li>
+            </Link>
           ))}
         </ul>
         <ScrollBar orientation="horizontal" />

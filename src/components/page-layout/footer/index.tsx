@@ -14,22 +14,21 @@ export default function Footer() {
           <div className="space-y-2">
             <section className="space-y-4 col-span-2 xl:col-span-3">
               <Logo ignoreModals={true} className="w-40 sm:w-44" />
-              {/* <p className="font-medium">
-                Discover the art of modern lighting features.
-              </p> */}
               <div className="space-y-2">
                 <p className="flex gap-2 items-start">
                   <Landmark
                     size={16}
-                    className="text-background relative top-1"
+                    className="text-background relative top-[5px] flex-shrink-0"
                   />
-                  31-53 Hunders Rd, Birmingham B19 1DP, United Kingdom
+                  <span>
+                    31-53 Hunders Rd, Birmingham B19 1DP, United Kingdom
+                  </span>
                 </p>
                 <a className="flex gap-2 items-start" href="tel:+441212855040">
                   <PhoneOutgoing
                     size={14}
-                    className="text-background relative top-1"
-                  />{" "}
+                    className="text-background relative top-[5px] flex-shrink-0"
+                  />
                   +44 121 285 5040
                 </a>
               </div>
@@ -48,7 +47,9 @@ export default function Footer() {
                 <FooterListItem href="/about-us/privacy-policy">
                   Privacy Policy
                 </FooterListItem>
-                <FooterListItem href="/about-us/return-and-exchanges">Return & Exchanges</FooterListItem>
+                <FooterListItem href="/about-us/return-and-exchanges">
+                  Return & Exchanges
+                </FooterListItem>
                 <FooterListItem href="/about-us/shipping-policy">
                   Shipping Policy
                 </FooterListItem>

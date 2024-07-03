@@ -30,12 +30,18 @@ export default function FilteredProducts({
   );
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
+    return products?.filter((product) => {
       if (filters.length === 0) {
-        return query === "" || product.name.toLowerCase().includes(query.toLowerCase());
+        return (
+          query === "" ||
+          product.name.toLowerCase().includes(query.toLowerCase())
+        );
       }
 
-      if (query !== "" && !product.name.toLowerCase().includes(query.toLowerCase())) {
+      if (
+        query !== "" &&
+        !product.name.toLowerCase().includes(query.toLowerCase())
+      ) {
         return false;
       }
 
@@ -53,7 +59,7 @@ export default function FilteredProducts({
   const isLoading = loading || isFetching;
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <div className="grid gap-4 grid-cols-2 sm:grid-cols-[repeat(auto-fill,minmax(14rem,1fr))] 2xl:grid-cols-[repeat(auto-fill,minmax(19rem,1fr))] z-[8] w-full">
         {filteredProducts.map((product: IProduct) => (
           <ProductCard
@@ -64,7 +70,12 @@ export default function FilteredProducts({
             product={product}
           />
         ))}
-        {isLoading && <ProductSkeletonsUnContained length={4} />}
+        {isLoading && (
+          <ProductSkeletonsUnContained
+            showText={products.length > 0}
+            length={products.length === 0 ? 5 : 1}
+          />
+        )}
       </div>
       {!isLoading && filteredProducts.length === 0 && (
         <div className="flex items-center justify-center w-full min-h-[25vh] font-medium text-muted-foreground opacity-80 h-full">
@@ -75,7 +86,6 @@ export default function FilteredProducts({
           </p>
         </div>
       )}
-      {isFetching && <div className="text-center mt-4 text-sm font-medium text-muted-foreground">Loading more...</div>}
     </div>
   );
 }
