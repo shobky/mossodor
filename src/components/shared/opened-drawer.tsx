@@ -1,6 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { Button } from "../ui/button";
 import { ArrowLeft } from "lucide-react";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";

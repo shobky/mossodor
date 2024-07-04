@@ -1,3 +1,13 @@
+export interface IReview {
+  _id: string;
+  name: string;
+  rate: number;
+  review: string;
+  date: number;
+  image: string;
+  reviews_count: number;
+  photos_count: number;
+}
 export const customerReviews = [
   {
     _id: "1",
@@ -71,16 +81,16 @@ export const customerReviews = [
     reviews_count: 2,
     photos_count: 2,
   },
-  {
-    _id: "7",
-    name: "Hassina Begum",
-    rate: 5,
-    review:
-      "Great customer service, products are high quality 👌 will shop again....",
-    date: 1704983737,
-    image:
-      "https://lh3.googleusercontent.com/a/ACg8ocIcU_5ockbMlCW7ZFu1sypy9XJLlyCh_ffsfhnhbfnfYxUplg=w60-h60-p-rp-mo-br100",
-    reviews_count: 3,
-    photos_count: 1,
-  },
+  // {
+  //   _id: "7",
+  //   name: "Hassina Begum",
+  //   rate: 5,
+  //   review:
+  //     "Great customer service, products are high quality 👌 will shop again....",
+  //   date: 1704983737,
+  //   image:
+  //     "https://lh3.googleusercontent.com/a/ACg8ocIcU_5ockbMlCW7ZFu1sypy9XJLlyCh_ffsfhnhbfnfYxUplg=w60-h60-p-rp-mo-br100",
+  //   reviews_count: 3,
+  //   photos_count: 1,
+  // },
 ];

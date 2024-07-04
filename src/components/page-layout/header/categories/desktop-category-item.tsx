@@ -12,7 +12,7 @@ export default function DesktopCategoryItem({
 }) {
   const [activeThumbnail, setActiveThumbnail] = useState(category.thumpnail);
   return (
-    <div className="flex max-w-[750px] w-max p-3 overflow-hidden h-[280px]  ">
+    <div className="flex max-w-[750px] w-max p-3 overflow-hidden h-[240px]  ">
       <Image
         src={activeThumbnail}
         alt={category.name}

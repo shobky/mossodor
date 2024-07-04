@@ -44,7 +44,7 @@ function HeroActions() {
   return (
     <div className="flex flex-col sm:flex-row  items-center justify-center gap-2">
       <Link href={"/shop"}>
-        <Button className="h-12 hover:backdrop-blur-xl bg-primary/80  hover:brightness-110">
+        <Button className="h-12 hover:backdrop-blur-xl bg-primary/80 text-white  hover:brightness-110">
           SHOP NOW
         </Button>
       </Link>
