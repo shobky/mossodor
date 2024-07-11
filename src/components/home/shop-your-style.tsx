@@ -7,7 +7,6 @@ import { ScrollBar, ScrollArea } from "../ui/scroll-area";
 import Link from "next/link";
 
 export default function ShoPYourStyle() {
-
   const styles = [
     {
       title: "Industrial",
@@ -34,12 +33,11 @@ export default function ShoPYourStyle() {
     <div className="space-y-1">
       <Padding className="space-y-1" variant="centered">
         <SectionTitle>
-          Shop your style <Paintbrush />
+          Shop your style in mind. <Paintbrush />
         </SectionTitle>
         <p className="relative   text-center mx-[15vw]">
-          Luxury, vintage, or industrial whatever your style, our modern
-          lighting fixtures are designed to complement and enhance your
-          aesthetic.
+          Find your unique lighting style, whether Luxury, vintage, or
+          industrial for any room.
         </p>
       </Padding>
 

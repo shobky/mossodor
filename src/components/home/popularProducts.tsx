@@ -11,7 +11,6 @@ export default async function PopularProducts() {
   let products:IProduct[] = [];
   try {
     products = await getPopularProducts();
-    console.log(products, "Jo")
   } catch (err: any) {
     console.log(err);
   }

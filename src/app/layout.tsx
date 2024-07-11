@@ -5,9 +5,11 @@ import { ThemeProvider } from "@/providers/theme.provider";
 import SessionProvider from "@/providers/session-provider";
 import { getCurrentSession } from "../lib/auth";
 import { Toaster } from "@/components/ui/sonner";
-import localFont from 'next/font/local'
+import localFont from "next/font/local";
 
-const inter = localFont({ src: '../../public/font/Inter-VariableFont_slnt,wght.ttf' })
+const inter = localFont({
+  src: "../../public/font/Inter-VariableFont_slnt,wght.ttf",
+});
 
 export const metadata: Metadata = {
   title: "Mossodor",

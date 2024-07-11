@@ -16,7 +16,7 @@ const COLLECTION = [
       "Functional yet fashionable, our lights are crafted to complement any space.",
   },
   {
-    name: "Handmade Wonders",
+    name: "Bambo Ratten lights",
     image: "/about/homemade.jpg",
     description:
       "In collaboration with R.Samuels Custom Lighting, we offer pieces that tell a story of timeless skill.",
@@ -24,52 +24,53 @@ const COLLECTION = [
 ];
 export default function AboutPage() {
   return (
-    <div className="space-y-20 ">
-      <section className="grid place-content-center text-center  gap-4 mx-[7vw] sm:mx-[10vw]">
+    <div className="space-y-20">
+      <section className="grid place-content-center text-center  gap-4 mx-[7vw] sm:mx-[12.5vw]">
         <p className="font-medium text-sm ">ABOUT MOSSODOR</p>
         <h1 className="font-bold text-primary text-3xl ">
-          Where Light Meets Elegance
+          Where lightening Meets Elegance
         </h1>
         <p className="text-sm">
-          At Mossodor, we illuminate spaces with a blend of tradition and
-          innovation. Born from over 55 years of collective expertise in design
-          and construction, our brand is the brainchild of visionaries dedicated
-          to the art of creating unique spaces. Our signature can be seen in the
-          prestigious contours of Birmingham&apos;s landmarks, each lit with the
-          promise of Mossodor&apos;s quality.
+          Welcome to Mossodor, the foundation resource for indoor online
+          lighting UK company. Mossodor is enthusiastic about lighting places
+          with an accurate balance of history and creativity, generating
+          atmospheres that leave an unforgettable impact. Mossodor, with over 55
+          years of combined design and building experience, is a shining example
+          of outstanding craftsmanship and imaginative design, based in
+          Birmingham&apos;s architectural heritage, each lit with the promise of
+          Mossodor&apos;s quality.
         </p>
+        <div className="mx-[7vw] sm:mx-[12.5vw]">
+          <Image
+            className="sm:w-2/3 block mx-auto rounded-xl"
+            width={800}
+            height={400}
+            src={"/about/mossodor-about-hero-image-compressed.png"}
+            alt="Mossodor lighting"
+          />
+          <p className="text-xs text-muted-foreground text-center py-2">
+            &apos;From Our{" "}
+            <Link className="underline" href={"/pendant-lights"}>
+              Pendant Lights
+            </Link>{" "}
+            Collection.&apos;
+          </p>
+        </div>
       </section>
-      <div className="mx-[7vw] sm:mx-[10vw]">
-        <Image
-          className="sm:w-1/2 block mx-auto"
-          width={800}
-          height={400}
-          src={"/about/mossodor-about-hero-image-compressed.png"}
-          alt="Mossodor lighting"
-        />
-        <p className="text-xs text-muted-foreground text-center py-2">
-        &apos;From Our{" "}
-          <Link className="underline" href={"/pendant-lights"}>
-            Pendant Lights
-          </Link>{" "}
-          Collection.&apos;
-        </p>
-      </div>
-      <section className="grid place-content-center text-center gap-4 bg-foreground text-background px-4 py-20 sm:p-20">
+
+      <section className="grid place-content-center text-center gap-4 bg-foreground text-background px-4 py-20 sm:p-20 mx-[7vw] sm:mx-[12.5vw] rounded-xl">
         <h2 className="font-bold  text-3xl">Why Choose Mossodor?</h2>
-        <p className=" mx-[7vw] sm:mx-[10vw]">
-          Our mission is simple: to amaze with beauty, elegance, and
-          affordability. We bring lighting solutions to your doorstep and a
-          legacy of craftsmanship and attention to detail. From the grandeur of
-          chandeliers to the modern simplicity of pendant lights, our range is
-          curated to bring your interiors to life.
+        <p className=" mx-[7vw] ">
+          Mossodor online shop combines history and innovation, and each light
+          expresses an idea of classic elegance and beauty. From the grandeur of
+          chandeliers to the modern simplicity of pendant lights, Mossodor will
+          convert your home into a marvel of brightness and beauty.
         </p>
       </section>
       <section className="grid place-content-center  gap-4 sm:scale-90">
-        <h3 className="text-3xl font-bold sm:scale-110 text-center">
-          Our Collection
-        </h3>
-        <div className="grid sm:grid-cols-3 gap-2 items-start mx-[7vw] sm:mx-[10vw]">
+        <p className="font-medium text-sm text-center ">OUR COLLECTION</p>
+
+        <div className="grid sm:grid-cols-3 gap-10 items-start mx-[7vw] sm:mx-[12.5vw]">
           {COLLECTION.map((item) => (
             <div
               key={item.name}
@@ -92,13 +93,17 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-      <section className="grid place-content-center gap-4 text-center mx-[7vw] sm:mx-[10vw]">
+      <section className="grid place-content-center gap-4 text-center mx-[7vw] sm:mx-[12.5vw]">
         <h4 className="text-3xl font-bold">Our Vision</h4>
         <p>
-          <span>&quot;To amaze through beauty, elegance, and price.&quot;</span>{" "}
-          This is not just our mantra; it&apos;s our promise to you. At
-          Mossodor, we&apos;re not just selling lights but crafting experiences
-          that make your home worth remembering.
+          <span>
+            Our journey began with a vision: to transform how we see lighting
+            and fill places with warmth, nature, and enhancement that are
+            affordable and eco - friendly. Mossodor&apos;s signature can be
+            found in every precisely created lighting anchor, from the majesty
+            of chandelier&apos;s attractions to the sensitivity of home
+            interiors, demonstrating our forever passion to perfection.
+          </span>
         </p>
         <div>
           <Image
@@ -109,7 +114,7 @@ export default function AboutPage() {
             alt="Mossodor lighting"
           />
           <p className="text-xs text-muted-foreground text-center py-2">
-          &apos;From Our{" "}
+            &apos;From Our{" "}
             <Link className="underline" href={"/pendant-lights"}>
               Pendant Lights
             </Link>{" "}

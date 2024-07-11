@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import {
   ArrowUpRight,
+  Award,
   CircleX,
   Copy,
   MapPin,
@@ -37,9 +38,7 @@ export function OrderActions({
           <MoreHorizontal size={20} />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40">
-        <DropdownMenuLabel>Order Actions</DropdownMenuLabel>
-        <DropdownMenuSeparator />
+      <DropdownMenuContent align="end" className="w-52">
         <DropdownMenuItem
           className="w-full justify-between"
           onClick={() =>
@@ -55,7 +54,6 @@ export function OrderActions({
         </DropdownMenuItem>
         {!open && (
           <>
-            <DropdownMenuSeparator />
             <Link href={`/account/orders/${order._id}`}>
               <DropdownMenuItem className="w-full justify-between">
                 Open <ArrowUpRight size={18} />
@@ -63,6 +61,14 @@ export function OrderActions({
             </Link>
           </>
         )}
+        <DropdownMenuItem className="w-full justify-between" disabled={true}>
+          Track <MapPin size={18} />
+        </DropdownMenuItem>
+        <Link href={`/warranty-registration/${order._id}`}>
+          <DropdownMenuItem className="w-full justify-between">
+            Register Warranty <Award size={18} />
+          </DropdownMenuItem>
+        </Link>
         <DropdownMenuSeparator />
         <CancelOrderDialog
           disabled={
@@ -70,11 +76,6 @@ export function OrderActions({
           }
           order={order}
         />
-        <DropdownMenuSeparator />
-
-        <DropdownMenuItem className="w-full justify-between" disabled={true}>
-          Track <MapPin size={18} />
-        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

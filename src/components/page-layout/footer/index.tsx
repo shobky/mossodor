@@ -53,7 +53,6 @@ export default function Footer() {
                 <FooterListItem href="/about-us/shipping-policy">
                   Shipping Policy
                 </FooterListItem>
-                <FooterListItem>Terms of Service</FooterListItem>
                 <FooterListItem href="/about-us/faqs">FAQS</FooterListItem>
                 {/* <FooterListItem>Contact</FooterListItem> */}
               </ul>

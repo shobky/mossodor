@@ -10,10 +10,8 @@ import { Padding } from "@/components/page-layout";
 export default function FaqsPage() {
   return (
     <Padding className="min-h-[50vh] py-[5vh] space-y-4">
-      <hr className="-mt-8 " />
-      <br />
       <h1 className="text-center font-bold text-2xl sm:text-3xl">FAQS</h1>
-      <h2 className=" sm:font-medium sm:text-lg text-center sm:mx-[10vw] ">
+      <h2 className="text-center sm:mx-[10vw] ">
         We are delighted to serve you. If you have any questions or feedback,
         <br />
         please reach out to us at any time at{" "}

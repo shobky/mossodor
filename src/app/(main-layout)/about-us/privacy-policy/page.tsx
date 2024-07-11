@@ -1,4 +1,5 @@
 import { Padding } from "@/components/page-layout";
+import Link from "next/link";
 import React from "react";
 
 export default function PrivacyPolicy() {
@@ -7,8 +8,10 @@ export default function PrivacyPolicy() {
       <h1 className="font-bold text-3xl text-center"> Privacy Policy</h1>
       <p className=" text-sm text-center text-muted-foreground">
         This Privacy Policy outlines how Mossodor collects, uses, and shares
-        personal information when you visit or make a purchase from mossodor.com
-        (the “Site”).
+        personal information when you visit or make a purchase from{" "}
+        <Link href={"/"} className="hover:text-primary cursor-default">
+          mossodor.com
+        </Link>
       </p>
       <div className=" py-10">
         <article className="space-y-4">
@@ -56,22 +59,19 @@ export default function PrivacyPolicy() {
               <strong>How We Use Your Personal Information</strong>
             </p>
             <p>
-              We use the Order Information to fulfill orders placed through the
+              {` We use the Order Information to fulfill orders placed through the
               Site (this includes processing your payment information, arranging
               shipping, and providing invoices and/or order confirmations).
-              Additionally, we use this Order Information to:
-            </p>
-            <p>Communicate with you;</p>
-            <p>Screen orders for potential risk or fraud;and</p>
-            <p>
-              Provide you with information or advertising related to our
-              products or services, in alignment with your preferences. We use
-              the Device Information to help screen for potential risk and fraud
+              Additionally, we use this Order Information to: Communicate with
+              you, Screen orders for potential risk or fraud and Provide you
+              with information or advertising related to our products or
+              services, in alignment with your preferences. We use the Device
+              Information to help screen for potential risk and fraud
               (particularly, by analyzing your IP address), and more generally
               to improve and optimize our Site (for example, by generating
               analytics about how our customers browse and interact with the
               Site and to assess the success of our marketing and advertising
-              campaigns).
+              campaigns).`}
             </p>
             <br />
 
@@ -124,28 +124,33 @@ export default function PrivacyPolicy() {
               ToS for more info. Opt out of this advertising by visiting
               https://app.retention.com/optout.
             </p>
-            <p>Your Rights</p>
+            <p className="font-semibold">Your Rights</p>
             <p>
               If you are a European resident, you have rights to access personal
               information we hold about you and to request correction, update,
               or deletion of your personal information. To exercise these
               rights, please contact us via the contact information below.
             </p>
-            <p>Data Retention</p>
-            <p>We will maintain your Order Information</p>
+            <p className="font-semibold">Data Retention</p>
             <p>
-              for our records unless and until you ask us to delete this
-              information.
+              We will maintain your Order Information for our records, unless
+              you ask us to delete this information.
             </p>
-            <p>Changes</p>
+            <p className="font-semibold">Changes</p>
             <p>
               We may update this privacy policy to reflect changes to our
               practices or for other operational, legal, or regulatory reasons.
             </p>
-            <p>Contact Us</p>
+            <p className="font-semibold">Contact Us</p>
             <p>
               For more information about our privacy practices, questions, or
-              complaints, please contact us by email at info@mossodor.com.
+              complaints, please contact us by email at{" "}
+              <a
+                href="mailto:info@mossodor.com"
+                className="text-primary hover:underline"
+              >
+                info@mossodor.com
+              </a>{" "}
               Mossodor™
             </p>
           </div>

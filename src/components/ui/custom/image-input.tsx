@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from "react";
-import { Check, ImageUp, Trash2 } from "lucide-react";
+import {  ImageUp, Trash2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

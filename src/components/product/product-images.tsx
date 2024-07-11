@@ -19,11 +19,17 @@ export default function ProductImages({
     <div className="space-y-1 sm:sticky top-[10vh] ">
       <div className="overflow-hidden bg-secondary dark:bg-black aspect-square w-full sm:w-[60vh] rounded-lg flex justify-center items-start ">
         <Image
-          src={currentImage}
+          src={`http://mossodor.com:3000/_next/image?url=${encodeURIComponent(
+            currentImage
+          )}&w=800&h=800&q=75`}
           width={800}
           height={800}
           alt={alt}
-          quality={100}
+          quality={75}
+          placeholder="blur"
+          blurDataURL={`/_next/image?url=${encodeURIComponent(
+            currentImage
+          )}&w=10&q=5`}
           className="w-full sm:w-[60vh] "
         />
       </div>
@@ -44,6 +50,10 @@ export default function ProductImages({
                 alt="product image"
                 width={100}
                 height={100}
+                placeholder="blur"
+                blurDataURL={`http://mossodor.com:3000/_next/image?url=${encodeURIComponent(
+                  image
+                )}&w=10&q=5`}
                 onClick={() => setCurrentImage(image)}
               />
             </button>
@@ -51,9 +61,6 @@ export default function ProductImages({
         </div>
         <ScrollBar orientation="horizontal" className="w-full" />
       </ScrollArea>
-      {/* <div className="grid place-content-center text-sm font-medium text-muted-foreground bg-black w-24 rounded-lg cursor-pointer hover:brightness-[.95]">
-          <p>+ {images.length - shownImages.length} more</p>
-        </div> */}
     </div>
   );
 }
