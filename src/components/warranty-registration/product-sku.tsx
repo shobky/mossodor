@@ -32,6 +32,7 @@ export default function WarrantyProductSku({
                 const product = item.product_id;
                 return (
                   <SelectItem
+                    key={product._id}
                     value={JSON.stringify({
                       sku: product.sku,
                       _id: product._id,

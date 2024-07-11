@@ -12,7 +12,7 @@ export default async function OurCategories() {
       <Padding className="space-y-1" variant="centered">
         <SectionTitle>Our Lighting Categories <Layers /></SectionTitle>
         <p className="relative   text-center mx-[15vw]">
-          Whether it's modern or traditional. Find the perfect lighting for any
+          Whether it&apos;s modern or traditional. Find the perfect lighting for any
           room or style that fits your taste
         </p>
       </Padding>
