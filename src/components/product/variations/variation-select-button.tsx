@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { selectedVariationsSlice } from "@/lib/redux/slices/selected-variations/selected-variation-slice";
 import { State, useDispatch } from "@/lib/redux/store";
 import { IVariationGroup } from "@/lib/types";
-import { Check } from "lucide-react";
-import React, { useCallback, useMemo } from "react";
+  import React, { useCallback, useMemo } from "react";
 import { useSelector } from "react-redux";
 
 const VariationSelectButton = React.memo(
@@ -68,7 +67,7 @@ const VariationSelectButton = React.memo(
     const variationButtons = useMemo(() => {
       return variationValues?.map((value) => {
         const isSelected = selectedVariationSelectors.some(
-          (v) => v.value === value
+          (v) => v.value.toLowerCase().trim() === value.toLowerCase().trim()
         );
 
         return (

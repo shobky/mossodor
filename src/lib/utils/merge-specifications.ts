@@ -52,18 +52,18 @@ export const mergeProductWithVariation = (
   }
 
   // Update price
-  if (selectedVariation.price !== null && selectedVariation.price !== 0) {
+  if (selectedVariation.price && selectedVariation.price !== null && selectedVariation.price !== 0) {
     mergedProduct.price = selectedVariation.price;
   }
 
   // Update other properties
   if (selectedVariation.sku) mergedProduct.sku = selectedVariation.sku;
   if (selectedVariation.ean) mergedProduct.ean = selectedVariation.ean;
-  if (selectedVariation.images && selectedVariation.images.length > 0) {
-    mergedProduct.images = selectedVariation.images;
-  }
-  if (selectedVariation.thumpnail)
-    mergedProduct.thumpnail = selectedVariation.thumpnail;
+  // if (selectedVariation.images && selectedVariation.images.length > 0) {
+  //   mergedProduct.images = selectedVariation.images;
+  // }
+  if (selectedVariation.images)
+    mergedProduct.thumpnail = selectedVariation.images[0];
 
   return mergedProduct;
 };

@@ -1,10 +1,8 @@
 import { ProductFaqs } from "@/components/product/details/product-faqs";
 import ProductDetails from "@/components/product/product-details";
 import SimilarProducts from "@/components/product/similar-products";
-import { ProductVariationSelector } from "@/components/product/variations/product-variation-selector";
-import OpenedDrawer from "@/components/shared/opened-drawer";
 import { gerVariationGroup, getProductByName } from "@/lib/api/products.api";
-import { IProduct, IVariationGroup } from "@/lib/types";
+import { IVariationGroup } from "@/lib/types";
 
 export default async function ProductContainer({ name }: { name: string }) {
   let product = null;
@@ -26,10 +24,6 @@ export default async function ProductContainer({ name }: { name: string }) {
     <>
       <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[4vh] ">
         <ProductDetails variationGroup={variationGroup} product={product}>
-          <ProductVariationSelector
-            product={product}
-            variationGroup={variationGroup}
-          />
           <ProductFaqs _id={product._id} />
         </ProductDetails>
       </div>

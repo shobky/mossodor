@@ -29,7 +29,7 @@ export default function CartButton({
 
   const item = useMemo(
     () =>
-      cartItems ? cartItems.find((item) => item._id === product._id) : null,
+      cartItems ? cartItems.find((item) => item.sku === product.sku) : null,
     [cartItems, product]
   );
 

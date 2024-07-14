@@ -2,10 +2,8 @@ import { Padding } from "@/components/page-layout";
 import { ProductFaqs } from "@/components/product/details/product-faqs";
 import ProductDetails from "@/components/product/product-details";
 import SimilarProducts from "@/components/product/similar-products";
-import { Skeleton } from "@/components/ui/skeleton";
 import { gerVariationGroup, getProductByName } from "@/lib/api/products.api";
 import { IVariationGroup } from "@/lib/types";
-import { Loader2 } from "lucide-react";
 import { Metadata, ResolvingMetadata } from "next";
 
 type Props = {
@@ -66,7 +64,7 @@ export default async function ProductsPage({ params: { name } }: Props) {
     <>
       <hr />
       <Padding>
-        <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[5vh]">
+        <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[10vh]">
           <ProductDetails variationGroup={variationGroup} product={product}>
             <ProductFaqs _id={product._id} />
           </ProductDetails>

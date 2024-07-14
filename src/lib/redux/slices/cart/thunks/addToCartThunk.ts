@@ -13,7 +13,7 @@ export const addToCartThunk = createAsyncThunk(
     if (!session?.user) {
       const cart = JSON.parse(localStorage.getItem("cart") ?? "[]");
       const itemIndex = cart.findIndex(
-        (cartItem: any) => cartItem._id === item._id
+        (cartItem: any) => cartItem.sku === item.sku
       );
       if (itemIndex !== -1) {
         cart[itemIndex].quantity += 1;
@@ -44,7 +44,7 @@ export const addToCartReducers = (
     .addCase(addToCartThunk.pending, (_) => {})
     .addCase(addToCartThunk.fulfilled, (state, action) => {
       const itemIndex = state.items.findIndex(
-        (item) => item._id === action.payload._id
+        (item) => item.sku === action.payload.sku
       );
       if (itemIndex === -1) {
         state.items.push({ ...action.payload, quantity: 1 });

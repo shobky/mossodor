@@ -17,7 +17,7 @@ export default async function OurCategories() {
         </p>
       </Padding>
 
-      <div className="grid grid-cols-4 mx-[7.5vw] sm:mx-[12.5vw] gap-4 items-center justify-center">
+      <div className="grid grid-cols-2 sm:grid-cols-4 mx-[15vw] gap-4 items-center justify-center">
         {categories?.map((category: any) => (
           <Link href={`/${category.slug}`} key={category._id} className="group">
             <div className="rounded-full aspect-square relative overflow-hidden  shadow-md">

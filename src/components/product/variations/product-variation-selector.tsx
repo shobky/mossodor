@@ -5,7 +5,7 @@ import { State, useSelector } from "@/lib/redux/store";
 
 export const ProductVariationSelector = ({
   variationGroup,
-  product
+  product,
 }: {
   variationGroup: IVariationGroup | null;
   product: any;
@@ -16,7 +16,6 @@ export const ProductVariationSelector = ({
   );
   const variationSelectors = variationGroup?.selectors;
 
-  console.log(variationSelectors, variationGroup);
   if (
     !variationSelectors ||
     Object.keys(variationSelectors)?.length === 0 ||
@@ -35,7 +34,7 @@ export const ProductVariationSelector = ({
             {variationName.trim()}s
           </p>
           <VariationSelectButton
-          product={product}
+            product={product}
             variationGroup={variationGroup}
             variationValues={variationSelectors[variationName]}
             variationName={variationName}

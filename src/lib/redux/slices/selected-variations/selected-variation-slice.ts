@@ -39,21 +39,23 @@ export const selectedVariationsSlice = createSlice({
       const selectedVariation = variations.find((variation) => {
         return state.selectedVariationSelectors.every((selector) => {
           const specification = variation.otherSpecifications.find(
-            (s: any) => s.name === selector.type
+            (s: any) => s.name.toLowerCase().trim() === selector.type.toLowerCase().trim()
           );
 
           if (specification) {
             if (Array.isArray(specification.value)) {
-              return specification.value.includes(selector.value);
+              const value = specification.value
+                .filter((v: any) => v !== null)
+                .map((v: any) => v.toLowerCase().trim());
+              return value.includes(selector.value.toLowerCase().trim());
             } else {
-              return specification.value === selector.value;
+              return specification.value.toLowerCase().trim() === selector.value.toLowerCase().trim();
             }
           }
           return false;
         });
       });
       state.selectedVariation = selectedVariation;
-
     },
     unselectVariation: (
       state,
@@ -61,7 +63,7 @@ export const selectedVariationsSlice = createSlice({
     ) => {
       state.selectedVariationSelectors =
         state.selectedVariationSelectors.filter(
-          (v) => v.type !== action.payload.type
+          (v) => v.type.toLowerCase().trim() !== action.payload.type.toLowerCase().trim()
         );
       state.selectedVariation = undefined;
     },

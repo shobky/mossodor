@@ -7,9 +7,11 @@ export default async function SidebarUser() {
   const session = await getCurrentSession();
   if (!session || !session.user)
     return (
-      <button className="flex items-center gap-3 font-medium">
-        <User size={20} />
-        Create a new account
+      <button className="flex items-center gap-3 font-normal  text-lg">
+        <div className="bg-secondary p-3 rounded-md text-muted-foreground">
+          <User size={25} />
+        </div>
+        Create your account
       </button>
     );
 

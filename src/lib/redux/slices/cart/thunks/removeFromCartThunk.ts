@@ -5,26 +5,26 @@ import { Fetch } from "@/lib/actions/fetch";
 
 export const removeFromCartThunk = createAsyncThunk(
   "cart/removeFromCart",
-  async (_id: string) => {
+  async (sku: string) => {
     const session = await getSession();
     if (!session?.user) {
       const cart = localStorage.getItem("cart");
       localStorage.setItem(
         "cart",
         JSON.stringify(
-          JSON.parse(cart ?? "").filter((item: any) => item._id !== _id)
+          JSON.parse(cart ?? "").filter((item: any) => item._id !== sku)
         )
       );
-      return _id;
+      return sku;
     }
     await Fetch(
-      `cart/user/${_id}`,
+      `cart/user/${sku}`,
       {
         method: "DELETE",
       },
       "secure"
     );
-    return _id;
+    return sku;
   }
 );
 
@@ -34,7 +34,7 @@ export const removeFromCartReducers = (
   builder
     .addCase(removeFromCartThunk.pending, (state) => {})
     .addCase(removeFromCartThunk.fulfilled, (state, action) => {
-      state.items = state.items.filter((item) => item._id !== action.payload);
+      state.items = state.items.filter((item) => item.sku !== action.payload);
     })
     .addCase(removeFromCartThunk.rejected, (state, action) => {
       state.error = action.error.message;

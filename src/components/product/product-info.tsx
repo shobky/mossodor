@@ -35,7 +35,10 @@ export default function ProductInfo({
             </p>
           }
         >
-          <ProductVariationSelector variationGroup={variationGroup} product={product} />
+          <ProductVariationSelector
+            variationGroup={variationGroup}
+            product={product}
+          />
         </Suspense>
         <section className="flex gap-2">
           <CartButtonContainer render="button" product={product} />
@@ -52,7 +55,7 @@ export default function ProductInfo({
                 quantity: 1,
               },
             ]}
-            total={product.price.toString()}
+            total={String(product.price)}
           />
         </section>
       </div>

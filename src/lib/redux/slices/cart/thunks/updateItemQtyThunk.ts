@@ -5,15 +5,15 @@ import { getSession } from "next-auth/react";
 
 export const updateCartItemThunk = createAsyncThunk(
   "cart/updateCartItem",
-  async (data: { _id: string; quantity: number }) => {
+  async (data: { sku: string; quantity: number }) => {
     const session = await getSession();
     if (!session?.user) {
       const cart = JSON.parse(localStorage.getItem("cart") ?? "[]");
       const updatedCart = cart.map((item: any) => {
         if (data.quantity === 0) {
-          return item._id !== data._id;
+          return item.sku !== data.sku;
         }
-        if (item._id === data._id) {
+        if (item.sku === data.sku) {
           item.quantity = data.quantity;
         }
         return item;
@@ -21,7 +21,7 @@ export const updateCartItemThunk = createAsyncThunk(
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
     await Fetch(
-      `cart/user/${data._id}/${data.quantity}`,
+      `cart/user/${data.sku}/${data.quantity}`,
       {
         method: "PUT",
       },
@@ -37,10 +37,10 @@ export const updateCartItemReducers = (
   builder
     .addCase(updateCartItemThunk.pending, (state) => {})
     .addCase(updateCartItemThunk.fulfilled, (state, action) => {
-      const item = state.items.find((item) => item._id === action.payload._id);
+      const item = state.items.find((item) => item.sku === action.payload.sku);
       if (action.payload.quantity === 0) {
         state.items = state.items.filter(
-          (item) => item._id !== action.payload._id
+          (item) => item.sku !== action.payload.sku
         );
       }
       if (item) {

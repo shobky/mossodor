@@ -52,7 +52,7 @@ export function MobileNav({
       </SheetTrigger>
       <SheetContent
         onInteractOutside={handleOpen}
-        className="w-screen p-0 overflow-hidden"
+        className="w-[90vw] h-[100svh] p-0 overflow-hidden"
       >
         <ScrollArea className="h-screen ">
           <div className="min-h-screen px-4 py-6 space-y-6 bg-background">

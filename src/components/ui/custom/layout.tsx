@@ -22,7 +22,12 @@ export const SectionTitle = ({
   className?: string;
 }) => {
   return (
-    <h2 className={cn("text-2xl text-center font-semibold p-4 flex items-center gap-2", className)}>
+    <h2
+      className={cn(
+        "text-2xl text-center font-semibold p-4 flex flex-col-reverse sm:flex-row items-center gap-2",
+        className
+      )}
+    >
       {children}
     </h2>
   );

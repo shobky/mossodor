@@ -16,8 +16,8 @@ export default function CartControl({
   const { toggleDrawer } = useHeaderDrawer();
   const dispatch = useDispatch();
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex gap-2 items-center">
+    <div className="flex items-start   sm:items-center gap-2 justify-between">
+      <div className="flex gap-2  items-center">
         <Button onClick={toggleDrawer} size={"icon"} variant={"ghost"}>
           <ArrowLeft size={20} />
         </Button>
@@ -25,11 +25,11 @@ export default function CartControl({
           £{parseFloat(total).toFixed(2)}
         </p>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row  items-end  sm:items-center gap-2">
         <div className="relative group">
           <Button
             onClick={() => dispatch(clearCartThunk())}
-            className="rounded-full"
+            className="rounded-full "
             size={"icon"}
             variant={"destructive"}
           >

@@ -33,16 +33,16 @@ export default function ShoPYourStyle() {
     <div className="space-y-1">
       <Padding className="space-y-1" variant="centered">
         <SectionTitle>
-          Shop your style in mind. <Paintbrush />
+          Pick your style. <Paintbrush />
         </SectionTitle>
-        <p className="relative   text-center mx-[15vw]">
+        <p className="relative   text-center mx-[10vw] sm:mx-[15vw]">
           Find your unique lighting style, whether Luxury, vintage, or
           industrial for any room.
         </p>
       </Padding>
 
       <ScrollArea>
-        <ul className="grid grid-cols-5 gap-1 w-[270vw] md:w-auto md:mx-[10vw] relative  p-12">
+        <ul className="grid grid-cols-5 gap-1 w-[200vw] md:w-auto md:mx-[10vw] relative  p-12">
           {styles.map((style) => (
             <Link
               href={`/shop?f=${JSON.stringify([
@@ -61,7 +61,7 @@ export default function ShoPYourStyle() {
                     className=" w-full h-full brightness-90 group-hover:brightness-100 transition-all duration-300 ease-in-out rounded-[30px] "
                   />
                 </div>
-                <p className=" font-semibold text-lg  z-20 text-center mt-2 ">
+                <p className=" font-semibold text-base  z-20 text-center mt-2 ">
                   {style.title}
                 </p>
               </li>

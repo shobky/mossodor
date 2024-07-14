@@ -19,9 +19,7 @@ export default function ProductImages({
     <div className="space-y-1 sm:sticky top-[10vh] ">
       <div className="overflow-hidden bg-secondary dark:bg-black aspect-square w-full sm:w-[60vh] rounded-lg flex justify-center items-start ">
         <Image
-          src={`http://mossodor.com:3000/_next/image?url=${encodeURIComponent(
-            currentImage
-          )}&w=800&h=800&q=75`}
+          src={currentImage}
           width={800}
           height={800}
           alt={alt}

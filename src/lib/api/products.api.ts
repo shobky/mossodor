@@ -41,7 +41,7 @@ export const searchProductByName = async (
 export const getProductByName = async (name: string): Promise<IProduct> => {
   const fixedName = name.replace("%20", " ");
   const data = await Fetch(`products/name/${fixedName}`, {
-    cache: "default",
+    cache: "no-cache",
   });
   return data.product;
 };
@@ -52,7 +52,7 @@ export const getSimilarProducts = async (
   const data = await Fetch(`products/similar`, {
     method: "POST",
     body: JSON.stringify({ category_ids }),
-    cache: "default",
+    cache: "no-cache",
   });
   return data.products;
 };

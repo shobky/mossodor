@@ -7,7 +7,7 @@ export const Reviews = () => {
   return (
     <div className="flex justify-center">
       <Padding variant="centered" className="sm:w-[88%]">
-        <SectionTitle className="flex flex-col-reverse sm:flex-row">
+        <SectionTitle >
           <span>What our customers say about us</span> <MessagesSquare />
         </SectionTitle>
         <ReviewsCaroucel />

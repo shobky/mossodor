@@ -1,0 +1,26 @@
+.swiper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mySwiper2 {
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+}
+
+.mySwiper {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  filter: brightness(0.7);
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1/1;
+}
