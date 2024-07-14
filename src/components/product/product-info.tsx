@@ -24,7 +24,7 @@ export default function ProductInfo({
       <div className="space-y-4">
         <p className="text-4xl font-bold ">{product.name}</p>
         <p className="text-3xl font-bold">£{product.price}</p>
-        <h2 className="text-secondary-foreground  leading-[1.3rem] w-[85%] ">
+        <h2 className="text-secondary-foreground  leading-[1.3rem] sm:w-[85%] ">
           {product.description}
         </h2>
 

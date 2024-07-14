@@ -25,23 +25,25 @@ export const ProductVariationSelector = ({
 
   return (
     <div className="space-y-2">
-      {Object.keys(variationSelectors)?.map((variationName) => (
-        <div key={variationName} className="flex flex-wrap gap-1">
-          <p
-            key={variationName}
-            className="border-dashed pointer-events-none cursor-default  bg-secondary text-secondary-foreground/50 font-medium rounded-full h-10 px-4 py-2"
-          >
-            {variationName.trim()}s
-          </p>
-          <VariationSelectButton
-            product={product}
-            variationGroup={variationGroup}
-            variationValues={variationSelectors[variationName]}
-            variationName={variationName}
-            disabledValues={disabledSelectors[variationName] || []}
-          />
-        </div>
-      ))}
+      {Object.keys(variationSelectors)
+        .filter((k: any) => k !== null && k !== "")
+        .map((variationName) => (
+          <div key={variationName} className="flex flex-wrap gap-1">
+            <p
+              key={variationName}
+              className="border-dashed pointer-events-none cursor-default  bg-secondary text-secondary-foreground/50 font-medium rounded-full h-10 px-4 py-2"
+            >
+              {variationName.trim()}s
+            </p>
+            <VariationSelectButton
+              product={product}
+              variationGroup={variationGroup}
+              variationValues={variationSelectors[variationName]}
+              variationName={variationName}
+              disabledValues={disabledSelectors[variationName] || []}
+            />
+          </div>
+        ))}
     </div>
   );
 };

@@ -88,7 +88,7 @@ const CartItemControl = ({ item }: { item: any }) => {
         </Button>
       </div>
       <Button
-        onClick={() => dispatch(removeFromCartThunk(item._id))}
+        onClick={() => dispatch(removeFromCartThunk(item.sku))}
         size={"icon"}
         className="w-6 h-6 sm:w-6 sm:h-6 rounded-full bg-foreground text-background p-[3px]"
       >

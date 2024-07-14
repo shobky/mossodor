@@ -9,13 +9,12 @@ export default function BackButton({ href }: { href: string | null }) {
   return (
     <Button
       onClick={() => {
-        href ? router.push(href) : router.back();
+        router.push("/shop");
       }}
       variant={"ghost"}
-      size={"icon"}
-      className="absolute left-0 top-0 m-4 sm:m-10"
+      className="absolute left-0 top-0 m-4 sm:m-10 gap-2"
     >
-      <ArrowLeft />
+      <ArrowLeft size={15} /> Shop
     </Button>
   );
 }

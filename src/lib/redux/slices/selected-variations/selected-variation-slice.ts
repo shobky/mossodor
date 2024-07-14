@@ -23,7 +23,7 @@ export const selectedVariationsSlice = createSlice({
 
       // Update selectedVariationSelectors
       state.selectedVariationSelectors = [
-        ...state.selectedVariationSelectors.filter(
+        ...state.selectedVariationSelectors?.filter(
           (v) => v.type.toLowerCase() !== newSelector.type.toLowerCase()
         ),
         newSelector,
@@ -62,7 +62,7 @@ export const selectedVariationsSlice = createSlice({
       action: PayloadAction<{ type: string; value: string }>
     ) => {
       state.selectedVariationSelectors =
-        state.selectedVariationSelectors.filter(
+        state.selectedVariationSelectors?.filter(
           (v) => v.type.toLowerCase().trim() !== action.payload.type.toLowerCase().trim()
         );
       state.selectedVariation = undefined;

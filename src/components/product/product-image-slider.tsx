@@ -55,8 +55,9 @@ export default function ProductImageSlider({
             <SwiperSlide key={index} className="">
               <Image
                 className="object-contain"
-                width={400}
-                height={400}
+                width={1000}
+                height={1000}
+                quality={100}
                 alt={alt}
                 src={image}
               />

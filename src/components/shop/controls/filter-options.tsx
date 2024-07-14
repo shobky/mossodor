@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { SlidersHorizontal } from "lucide-react";
 import { ResetFilters } from "./reset-filters";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 export const FilterOptions = ({
   filters,
@@ -24,35 +25,32 @@ export const FilterOptions = ({
     },
     {
       name: "Style",
-      value: [
-        "Industrial",
-        "Luxury",
-        "Rattan",
-        "Scandinavian",
-        "Vintage",
-      ],
+      value: ["Industrial", "Luxury", "Rattan", "Scandinavian", "Vintage"],
     },
   ];
 
   return (
-    <div className="py-3 space-y-4 border shadow-md sm:shadow-none sm:border-none bg-background rounded-xl ">
-      <div className="flex items-center justify-between px-3 ">
-        <p className="text-lg font-semibold ">Filters</p>
-        <ResetFilters />
+    <ScrollArea className="h-[40vh] min-h-[300px] border shadow-md sm:shadow-none sm:border-none bg-background rounded-xl">
+      <div className="py-3 space-y-4  ">
+        <div className="flex items-center justify-between px-3 ">
+          <p className="text-lg font-semibold ">Filters</p>
+          <ResetFilters />
+        </div>
+        <div className="gap-4">
+          {options.map((option) => (
+            <div key={option.name}>
+              <hr className="my-4" />
+              <SpecFilterBlock
+                data={option}
+                filters={filters}
+                handleFilters={handleFilters}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="gap-4">
-        {options.map((option) => (
-          <div key={option.name}>
-            <hr className="my-4" />
-            <SpecFilterBlock
-              data={option}
-              filters={filters}
-              handleFilters={handleFilters}
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+      <ScrollBar orientation="vertical" />
+    </ScrollArea>
   );
 };
 

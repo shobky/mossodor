@@ -52,10 +52,10 @@ export function MobileNav({
       </SheetTrigger>
       <SheetContent
         onInteractOutside={handleOpen}
-        className="w-[90vw] h-[100svh] p-0 overflow-hidden"
+        className="w-[90vw] h-full p-0 overflow-hidden"
       >
-        <ScrollArea className="h-screen ">
-          <div className="min-h-screen px-4 py-6 space-y-6 bg-background">
+        <ScrollArea className="h-full">
+          <div className="min-h-full p-4 bg-background space-y-4">
             <div className="flex items-center justify-between">
               {/* rendering SidebarUser. Avatar + Name + Email */}
               {children[1]}
