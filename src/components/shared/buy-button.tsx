@@ -63,21 +63,25 @@ const BuyButton = ({
   }, []);
 
   const handleCheckout = async () => {
-    if (!stripe) return;
-    if (!session) {
-      if (buyingSingleProduct) {
-        router.push(
-          `/login?msg=please login first and we will redirect you back.&callback=/products/${productName}`
-        );
-      } else {
-        router.push(
-          "/login?msg=Your cart is saved, please login to continue.&callback=/checkout"
-        );
+    try {
+      if (!stripe) return;
+      if (!session) {
+        if (buyingSingleProduct) {
+          router.push(
+            `/login?msg=please login first and we will redirect you back.&callback=/products/${productName}`
+          );
+        } else {
+          router.push(
+            "/login?msg=Your cart is saved, please login to continue.&callback=/checkout"
+          );
+        }
+        return;
       }
-      return;
+      // @ts-ignore
+      await createCheckoutSession(items, String(total), session.user?._id);
+    } catch (err: any) {
+      toast.error("Failed to checkout, please try again later.");
     }
-    // @ts-ignore
-    await createCheckoutSession(items, String(total), session.user?._id);
   };
 
   return (

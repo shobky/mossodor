@@ -1,10 +1,8 @@
 import { Metadata } from "next";
-import Image from "next/image";
 
 import { SidebarNav } from "@/components/ui/custom/sidebar-nav";
 import { Padding } from "@/components/page-layout";
-import { Separator } from "@/components/ui/separator";
-import { Heart, Receipt, ReceiptIcon, Settings, User } from "lucide-react";
+import { Award, Heart, ReceiptIcon, Settings, User } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Account",
@@ -32,6 +30,11 @@ const sidebarNavItems = [
     href: "/account/profile",
     icon: <User size={18} strokeWidth={2.5} />,
   },
+  {
+    title: "My Warranties",
+    href: "/account/warranties",
+    icon: <Award size={18} strokeWidth={2.5} />,
+  },
 ];
 
 interface SettingsLayoutProps {
@@ -43,9 +46,8 @@ export default function SettingsLayout({ children }: SettingsLayoutProps) {
     <>
       <hr />
       <Padding className="min-h-screen py-10 ">
-       
         <div className="flex  flex-row lg:space-x-16">
-          <aside className="-mx-4 lg:w-1/6 hidden md:block">
+          <aside className="-mx-4 lg:w-1/6 hidden lg:block">
             <div className="sticky top-10">
               <SidebarNav items={sidebarNavItems} />
             </div>

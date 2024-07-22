@@ -6,6 +6,7 @@ import SessionProvider from "@/providers/session-provider";
 import { getCurrentSession } from "../lib/auth";
 import { Toaster } from "@/components/ui/sonner";
 import localFont from "next/font/local";
+import { Suspense } from "react";
 
 const inter = localFont({
   src: "../../public/font/Inter-VariableFont_slnt,wght.ttf",
@@ -29,7 +30,7 @@ export default async function RootLayout({
           <ReduxProvider>
             <ThemeProvider>
               <Toaster richColors position="bottom-right" />
-              {children}
+              <Suspense>{children}</Suspense>
             </ThemeProvider>
           </ReduxProvider>
         </SessionProvider>

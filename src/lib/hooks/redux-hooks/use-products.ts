@@ -50,7 +50,7 @@ export const useProducts = (limit?: number) => {
   const fetchMoreData = async () => {
     if (totalProducts === products.length) return;
 
-    if (filters.length > 0) {
+    if (filters && filters.length > 0) {
       await dispatch(
         fetchFilteredProductsThunk({
           filters: filters,

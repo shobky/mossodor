@@ -8,7 +8,7 @@ type SingleImageInputProps = {
   alt: string;
   onDelete?: () => void;
   onSelect?: (file: File) => void;
-  handleImageChange: (url: string) => void;
+  handleImageChange?: (url: string) => void;
   src?: string;
   text?: string;
 };
@@ -51,7 +51,7 @@ const SingleImageInput = ({
       const file = e.dataTransfer.files[0];
       if (file) {
         const objectUrl = URL.createObjectURL(file);
-        handleImageChange(objectUrl);
+        handleImageChange && handleImageChange(objectUrl);
       }
       onSelect && file && onSelect(file);
     },
@@ -64,7 +64,10 @@ const SingleImageInput = ({
   }, [onDelete]);
 
   return (
-    <div onDrop={handleFilesDrop} className="flex flex-wrap gap-2 relative overflow-hidden">
+    <div
+      onDrop={handleFilesDrop}
+      className="flex flex-wrap gap-2 relative overflow-hidden"
+    >
       <div className="group w-fit">
         <input
           accept="image/*"
@@ -80,7 +83,7 @@ const SingleImageInput = ({
               width={50}
               height={200}
               src={image}
-              alt={alt}
+              alt={alt || "uploaded image"}
               className="rounded-lg object-cover aspect-square w-8 h-8 z-10"
             />
           ) : (
@@ -99,7 +102,7 @@ const SingleImageInput = ({
                   size="icon"
                   type="button"
                   onClick={handleClearImage}
-                  className="flex w-6 h-6"
+                  className="flex w-6 h-6 relative z-50"
                 >
                   <Trash2 size={17} />
                 </Button>

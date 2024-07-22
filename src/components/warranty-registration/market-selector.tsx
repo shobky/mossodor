@@ -10,11 +10,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "../ui/input";
-export default function MarketSelector() {
+export default function MarketSelector({
+  handleInputChange,
+}: {
+  handleInputChange: any;
+}) {
   const [otherMarket, setOtherMarket] = useState(false);
   return (
     <div className="flex items-center gap-4 w-full">
-      <Select>
+      <Select
+        onValueChange={(v) => {
+          if (v === "other") {
+            setOtherMarket(true);
+          } else {
+            setOtherMarket(false);
+            handleInputChange("market", v);
+          }
+        }}
+      >
         <SelectTrigger className="w-full">
           <SelectValue placeholder="Select where your bought your item from" />
         </SelectTrigger>

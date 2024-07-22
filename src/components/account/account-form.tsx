@@ -55,25 +55,29 @@ export function AccountForm({ user }: { user: any }) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Your email" {...field} />
-              </FormControl>
               <FormDescription>
                 This is the email we&apos;ll use for contacting you.
               </FormDescription>
+              <FormControl>
+                <Input className="border-0 bg-muted/50" placeholder="Your email" {...field} />
+              </FormControl>
+           
               <FormMessage />
             </FormItem>
           )}
         />{" "}
-        <Button disabled type="submit">Update account</Button>
+        <div className="md:flex space-y-10 md:space-y-0 justify-between items-center">
+          <Button disabled className="bg-foreground hover:bg-foreground/80" type="submit">
+            Update account
+          </Button>
+          <div className="flex gap-2">
+            <DeleteAccountDialog />
+            <Button className="gap-2" type="button" variant={"outline"}>
+              <RotateCw size={15} /> Reset password
+            </Button>
+          </div>
+        </div>
       </form>
-      <Separator />
-      <div className="flex gap-2">
-        <DeleteAccountDialog />
-        <Button className="gap-2" type="button" variant={"outline"}>
-          <RotateCw size={15} /> Reset password
-        </Button>
-      </div>
     </Form>
   );
 }

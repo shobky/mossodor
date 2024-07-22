@@ -40,7 +40,7 @@ export function CancelOrderDialog({
             className="w-full  justify-between"
             disabled={disabled}
           >
-            Cancel <CircleX size={18} />
+            Cancel Order <CircleX size={18} />
           </DropdownMenuItem>
         </button>
       </AlertDialogTrigger>

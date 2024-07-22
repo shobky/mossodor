@@ -13,7 +13,7 @@ export const sendOrderConfirmationEmail = async (
     let transporter = nodemailer.createTransport({
       host: process.env.SMTP_EMAIL_HOST, // Your SMTP server hostname
       port: Number(process.env.SMTP_EMAIL_HOST), // Port for secure SMTP (TLS)
-      secure: false, // true for 465, false for other ports
+      secure  : false, // true for 465, false for other ports
       auth: {
         user: process.env.SENDER_EMAIL, // Your email address
         pass: process.env.SENDER_EMAIL_PASSWORD, // Your email password or app-specific password

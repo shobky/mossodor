@@ -15,13 +15,23 @@ import ClearCartOnSuccessfulOrder from "./clearCartOnSuccessfulOrder";
 import { format } from "date-fns";
 import { OrderActions } from "@/components/orders/order-actions";
 import { sendOrderConfirmationEmail } from "@/lib/utils/send-email";
+import OrderPills from "@/components/orders/order-pills";
 
 export default async function OrderConfirmationPage({
   params,
 }: {
   params: { orderId: string };
 }) {
-  const { order } = await Fetch(`orders/${params.orderId}`, {}, "secure");
+  let order = null;
+  try {
+    const data = await Fetch(`orders/${params.orderId}`, {}, "secure");
+    if (data?.order) {
+        order = data.order;
+    }
+    console.log(data, "Order Data");
+  } catch (err: any) {
+    console.error(err);
+  }
 
   if (!order)
     return (
@@ -39,21 +49,24 @@ export default async function OrderConfirmationPage({
   return (
     <div className="space-y-4 ">
       {/*Clears the cart in a useEffect */}
-      <ClearCartOnSuccessfulOrder success={order._id ? true : false} />
-      <section className="px-1">
-        <div className="flex flex-col sm:flex-row justify-between items-center ">
-          <h1>
-            <strong>Order</strong>#{order._id}
-          </h1>
-          <div className="flex items-center gap-4 sm:gap-2">
-            <p>{format(new Date(order.purchaseDate), "PPPP")}</p>
+      <ClearCartOnSuccessfulOrder success={order.orderNumber ? true : false} />
+      <section className="px-1 space-y-4">
+        <div className="">
+          <div className="flex items-center justify-between gap-4 md:gap-2">
+            <p>{format(new Date(order.purchaseDate * 1000), "PPPP")}</p>
             <OrderActions open={true} order={order} />
           </div>
         </div>
-        <p className="text-sm text-muted-foreground text-center sm:text-left">{order.buyerEmail}</p>
+        <div className="flex flex-col lg:flex-row items-start gap-4 justify-between">
+          <p className="text-sm text-muted-foreground text-center md:text-left">
+            {order.buyerEmail}
+          </p>
+          <OrderPills order={order} />
+        </div>
       </section>
-      <div className="sm:flex sm:gap-4">
-        <div className="flex-1 w-full flex  justify-between flex-col-reverse sm:flex-col gap-4 mb-4 sm:mb-0 ">
+
+      <div className="md:flex md:gap-4">
+        <div className="flex-1 w-full flex  justify-between flex-col-reverse mdflex-col gap-4 mb-4 mdmb-0 ">
           <section className="bg-secondary h-full rounded-md">
             <div className=" border-b border-dashed p-6 ">
               <h3 className="text-base font-semibold tracking-wide">
@@ -111,48 +124,48 @@ export default async function OrderConfirmationPage({
             </Link>
           </section>
         </div>
-        <section className=" w-full h-min  bg-secondary flex-[1.2] rounded-md text-secondary-foreground">
-          <ScrollArea className="h-[50vh] p-rounded-md">
-            <div className=" flex items-center justify-between border-b border-dashed p-6">
+        <section className=" w-full h-min bg-secondary flex-[1.2] rounded-md text-secondary-foreground">
+          <ScrollArea className="h-[45vh] p-rounded-md">
+            <div className="flex items-center justify-between border-b border-dashed p-6 ">
               <h4 className="text-base font-semibold tracking-wide ">
                 Order Summary
               </h4>
+              <p className="font-medium">#{order.orderNumber}</p>
             </div>
             <div className="grid gap-6 p-6 ">
-              {order.items?.map(
-                (item: { product_id: IProduct; quantity: number }) => {
-                  const product = item.product_id;
-                  return (
-                    <div
-                      key={product._id}
-                      className="flex gap-4 items-start w-full p-2"
-                    >
-                      <div className="bg-transparent border-2 border-dashed  rounded-md  w-24 h-24 p-2 flex-shrink-0">
-                        <Image
-                          width={200}
-                          height={200}
-                          src={product.thumpnail}
-                          alt={product.altText}
-                          className="w-full h-full"
-                        />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-lg leading-6">{product.name}</p>
-                        <p className="text-lg font-medium">
-                          £{Number(product.price) * Number(item.quantity)}
-                        </p>
-                        <p className="text-muted-foreground text-sm font-medium">
-                          Quantity {`[${item.quantity}]`}
-                        </p>
-                      </div>
+              {order.items?.map((item: any) => {
+                return (
+                  <div
+                    key={item.sku}
+                    className="flex gap-4 items-start w-full p-2"
+                  >
+                    <div className="bg-transparent border-2 border-dashed  rounded-md  w-24 h-24 p-2 flex-shrink-0">
+                      <Image
+                        width={200}
+                        height={200}
+                        src={item.thumpnail}
+                        alt={item.name}
+                        className="w-full h-full"
+                      />
                     </div>
-                  );
-                }
-              )}
+                    <div>
+                      <p className="font-semibold text-lg leading-6">
+                        {item.name}
+                      </p>
+                      <p className="text-lg font-medium">
+                        £{Number(item.price) * Number(item.quantity)}
+                      </p>
+                      <p className="text-muted-foreground text-sm font-medium">
+                        Quantity {`[${item.quantity}]`}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
             <ScrollBar orientation="vertical" />
           </ScrollArea>
-          <p className="font-bold text-3xl  text-right p-6">
+          <p className="font-bold text-2xl  text-right p-6">
             £{parseFloat(String(order.total / 100)).toFixed(2)}
           </p>
         </section>

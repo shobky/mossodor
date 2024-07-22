@@ -30,7 +30,7 @@ export const FilterOptions = ({
   ];
 
   return (
-    <ScrollArea className="h-[40vh] min-h-[300px] border shadow-md sm:shadow-none sm:border-none bg-background rounded-xl">
+    <ScrollArea className="sm:h-full h-[40vh] min-h-[300px] border shadow-md sm:shadow-none sm:border-none bg-background rounded-xl">
       <div className="py-3 space-y-4  ">
         <div className="flex items-center justify-between px-3 ">
           <p className="text-lg font-semibold ">Filters</p>

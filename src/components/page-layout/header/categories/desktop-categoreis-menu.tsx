@@ -17,11 +17,11 @@ export default function DesktopCategoreisMenu({
     <NavigationMenu>
       <NavigationMenuList className="flex items-center justify-between  ">
         {categories.map((category) => (
-          <NavigationMenuItem key={category._id}>
+          <NavigationMenuItem  key={category._id}>
             <Link href={`/${category.slug}`}>
               <NavigationMenuTrigger>{category.name}</NavigationMenuTrigger>
             </Link>
-            <NavigationMenuContent>
+            <NavigationMenuContent  >
               <DesktopCategoryItem category={category} />
             </NavigationMenuContent>
           </NavigationMenuItem>

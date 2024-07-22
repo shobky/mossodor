@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   Select,
   SelectContent,
@@ -9,19 +9,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { IProduct } from "@/lib/types";
 import { Input } from "../ui/input";
 import Image from "next/image";
 import { Dot } from "lucide-react";
 export default function WarrantyProductSku({
   orderItems,
+  handleInputChange,
 }: {
   orderItems: any[];
+  handleInputChange: any;
 }) {
   return (
     <div className="flex items-center gap-4 w-full">
       {orderItems?.length > 0 ? (
-        <Select>
+        <Select onValueChange={(v) => handleInputChange("productSKU", JSON.parse(v).sku)}>
           <SelectTrigger className="w-full">
             <SelectValue placeholder="Select product SKU" />
           </SelectTrigger>
@@ -29,25 +30,24 @@ export default function WarrantyProductSku({
             <SelectGroup>
               <SelectLabel>Product SKU</SelectLabel>
               {orderItems.map((item) => {
-                const product = item.product_id;
                 return (
                   <SelectItem
-                    key={product._id}
+                    key={item._id}
                     value={JSON.stringify({
-                      sku: product.sku,
-                      _id: product._id,
+                      sku: item.sku,
+                      _id: item._id,
                     })}
                   >
                     <div className="flex items-center ">
                       <p className="font-medium flex items-center">
-                        {product.name} <Dot size={20} /> {product.sku}
+                        {item.name} <Dot size={20} /> {item.sku}
                       </p>
                       <Dot size={20} />{" "}
                       <Image
-                        src={product.thumpnail}
+                        src={item.thumpnail}
                         width={25}
                         height={25}
-                        alt={product.title}
+                        alt={item.title}
                         className="object-contain w-8 h-8 aspect-square p-1  "
                       />
                     </div>

@@ -21,7 +21,13 @@ export default async function SidebarUser() {
       <div className="flex items-start gap-3 ">
         <UserAvatar />
         <div className="leading-none ">
-          <p className="text-xl font-semibold">{session.user.name}</p>
+          <p
+            className={`font-semibold ${
+              session.user.name.length > 16 ? "text-base" : "text-lg"
+            }`}
+          >
+            {session.user.name}
+          </p>
           <p className="text-muted-foreground">{session.user.email}</p>
         </div>
       </div>

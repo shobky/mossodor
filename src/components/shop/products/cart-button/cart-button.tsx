@@ -51,13 +51,17 @@ export default function CartButton({
   if (render === "button")
     return (
       <Button
-        disabled={item}
         onClick={handleAddToCart}
         className="font-semibold gap-2 ease-in-out duration-300 hover:bg-foreground bg-foreground/95 text-background hover:contrast-200"
       >
         {item ? (
           <>
-            <Check size={15} className="" /> In cart{" "}
+            {item.quantity > 1 ? (
+              item.quantity + " "
+            ) : (
+              <Check size={15} className="" />
+            )}
+            In cart{" "}
           </>
         ) : (
           <>

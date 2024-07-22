@@ -13,6 +13,8 @@ export default async function OrdersPage() {
   } catch (err: any) {
     console.log(err);
   }
+
+  console.log(orders, "Orders");
   return (
     <div className="space-y-6">
       <section className="grid grid-cols-5 items-center justify-between ">
@@ -25,7 +27,7 @@ export default async function OrdersPage() {
         </div>
       </section>
       <Separator />
-      <br/>
+      <br />
       <OrdersTable orders={orders} />
     </div>
   );

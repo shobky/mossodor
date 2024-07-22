@@ -81,6 +81,7 @@ export type TOrderStatus =
 
 export interface IOrder {
   _id: any;
+  orderNumber: number;
   subtotal: number;
   total: number;
   shipping?: number;
@@ -99,6 +100,7 @@ export interface IOrder {
   address: IAddress;
   user_id: string | IUser;
   discount: number;
+  warranty_id: string | null;
 }
 
 export interface IVariationGroup {

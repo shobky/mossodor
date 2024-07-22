@@ -12,14 +12,14 @@ export default function DesktopCategoryItem({
 }) {
   const [activeThumbnail, setActiveThumbnail] = useState(category.thumpnail);
   return (
-    <div className="flex max-w-[750px] w-max p-3 overflow-hidden h-[240px]  ">
+    <div className="flex max-w-[625px] w-max p-3 overflow-hidden h-[240px]  ">
       <Image
         src={activeThumbnail}
         alt={category.name}
         width={150}
         height={300}
         quality={60}
-        className="rounded-md object-fit w-48 transition-all ease-in-out duration-300 "
+        className="rounded-md object-fit w-40 transition-all ease-in-out duration-300 "
       />
       <ul className="grid grid-cols-2">
         {category.children

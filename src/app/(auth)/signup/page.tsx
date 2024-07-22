@@ -84,7 +84,7 @@ export default function SignupPage() {
         await signIn("credentials", {
           email,
           password,
-          callbackUrl: "/",
+          callbackUrl: cb ?? "/",
         });
         setStatus("idle");
       }

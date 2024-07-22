@@ -43,10 +43,12 @@ export function OrderActions({
           className="w-full justify-between"
           onClick={() =>
             navigator.clipboard
-              .writeText(order._id || "")
-              .then(() => toast.info(`Copied order number | ${order._id}`))
+              .writeText(String(order.orderNumber) || "")
+              .then(() =>
+                toast.info(`Copied order number | ${order.orderNumber}`)
+              )
               .catch((err) =>
-                toast.error(`Can't copy  number for order ${order._id}`)
+                toast.error(`Can't copy  number for order ${order.orderNumber}`)
               )
           }
         >
@@ -54,7 +56,7 @@ export function OrderActions({
         </DropdownMenuItem>
         {!open && (
           <>
-            <Link href={`/account/orders/${order._id}`}>
+            <Link href={`/account/orders/${order.orderNumber}`}>
               <DropdownMenuItem className="w-full justify-between">
                 Open <ArrowUpRight size={18} />
               </DropdownMenuItem>
@@ -64,11 +66,14 @@ export function OrderActions({
         <DropdownMenuItem className="w-full justify-between" disabled={true}>
           Track <MapPin size={18} />
         </DropdownMenuItem>
-        <Link href={`/warranty-registration/${order._id}`}>
-          <DropdownMenuItem className="w-full justify-between">
+        <DropdownMenuItem
+          disabled={order.warranty_id ? true : false}
+          className="w-full justify-between"
+        >
+          <Link className="flex justify-between items-center w-full" href={`/warranty-registration/${order.orderNumber}`}>
             Register Warranty <Award size={18} />
-          </DropdownMenuItem>
-        </Link>
+          </Link>
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <CancelOrderDialog
           disabled={

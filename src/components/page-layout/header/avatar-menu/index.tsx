@@ -20,7 +20,7 @@ export function AvatarMenu() {
           <UserAvatar className="w-6 h-6" />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-60 p-2 ">
+      <DropdownMenuContent align="end" className="w-64 p-2 ">
         <DropdownMenuItem>
           <SidebarUser />
         </DropdownMenuItem>
