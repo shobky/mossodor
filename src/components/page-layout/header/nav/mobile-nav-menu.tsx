@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ICategory } from "@/lib/types";
 import {
   ArrowRight,
+  Award,
   ChevronRight,
   Heart,
   Home,
@@ -72,19 +73,23 @@ export function MobileNav({
               </NavLink>
               <NavLink onClose={handleOpen} href="/account/orders">
                 <ReceiptIcon size={20} strokeWidth={2} />
-                <span>orders</span>
+                <span>Orders</span>
               </NavLink>
               <NavLink onClose={handleOpen} href="/account/wishlist">
                 <Heart size={20} strokeWidth={2} />
-                <span>wishlist</span>
+                <span>Wishlist</span>
+              </NavLink>
+              <NavLink onClose={handleOpen} href="/account/warranties">
+                <Award size={20} strokeWidth={2} />
+                <span>My warranties</span>
               </NavLink>
               <NavLink onClose={handleOpen} href="/account">
                 <Settings size={20} strokeWidth={2} />
-                <span>account</span>
+                <span>Account</span>
               </NavLink>
               <NavLink onClose={handleOpen} href="/account/profile">
                 <User size={20} strokeWidth={2} />
-                <span>profile</span>
+                <span>Profile</span>
               </NavLink>
               <NavLink onClose={handleOpen} href="#">
                 <NotepadText size={20} strokeWidth={1.7} />
