@@ -11,7 +11,7 @@ export default function CartItemsContainer({ items }: { items: any }) {
     <div className="grid gap-2">
       {items?.map((item: any) => (
         <div
-          key={"cart-items" + item._id}
+          key={"cart-items" + item.sku}
           className="bg-muted p-4 sm:p-10 rounded-xl sm:flex sm:gap-10 items-center relative"
         >
           <CartItemControl item={item} />

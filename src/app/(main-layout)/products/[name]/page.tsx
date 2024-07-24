@@ -64,12 +64,12 @@ export default async function ProductsPage({ params: { name } }: Props) {
     <>
       <hr />
       <Padding>
-        <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[5vh] sm:pt-[10vh]">
+        <div className="lg:flex items-start gap-[calc(3rem+2.5vw)] pt-[5vh] lg:pt-[10vh]">
           <ProductDetails variationGroup={variationGroup} product={product}>
             <ProductFaqs _id={product._id} />
           </ProductDetails>
         </div>
-        <div className="sm:mx-[7.5vw] ">
+        <div className="lg:mx-[7.5vw] ">
           <SimilarProducts product={product} />
         </div>
       </Padding>

@@ -59,11 +59,9 @@ export const mergeProductWithVariation = (
   // Update other properties
   if (selectedVariation.sku) mergedProduct.sku = selectedVariation.sku;
   if (selectedVariation.ean) mergedProduct.ean = selectedVariation.ean;
-  // if (selectedVariation.images && selectedVariation.images.length > 0) {
-  //   mergedProduct.images = selectedVariation.images;
-  // }
-  if (selectedVariation.images)
-    mergedProduct.thumpnail = selectedVariation.images[0];
 
+  if (selectedVariation.images && selectedVariation.images[0] && selectedVariation.type) {
+    mergedProduct.thumpnail = selectedVariation.images[0];
+  }
   return mergedProduct;
 };

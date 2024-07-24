@@ -1,10 +1,7 @@
 import { ActionReducerMapBuilder, createAsyncThunk } from "@reduxjs/toolkit";
-import { IProduct } from "@/lib/types";
 import { CartInitalState } from "../cart-slice";
-import { toast } from "sonner";
 import { Fetch } from "@/lib/actions/fetch";
 import { getSession } from "next-auth/react";
-import { sendOrderConfirmationEmail } from "@/lib/utils/send-email";
 
 export const addToCartThunk = createAsyncThunk(
   "cart/addToCart",
@@ -27,7 +24,7 @@ export const addToCartThunk = createAsyncThunk(
       return item;
     }
     await Fetch(
-      `cart/add/${item._id}`,
+      `cart/add/${item._id}/${item.sku}`,
       {
         method: "POST",
       },

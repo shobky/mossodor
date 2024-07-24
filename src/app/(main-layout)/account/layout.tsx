@@ -21,6 +21,11 @@ const sidebarNavItems = [
     icon: <Heart size={18} strokeWidth={2.5} />,
   },
   {
+    title: "My Warranties",
+    href: "/account/warranties",
+    icon: <Award size={18} strokeWidth={2.5} />,
+  },
+  {
     title: "Account",
     href: "/account",
     icon: <Settings size={18} strokeWidth={2.5} />,
@@ -30,11 +35,7 @@ const sidebarNavItems = [
     href: "/account/profile",
     icon: <User size={18} strokeWidth={2.5} />,
   },
-  {
-    title: "My Warranties",
-    href: "/account/warranties",
-    icon: <Award size={18} strokeWidth={2.5} />,
-  },
+
 ];
 
 interface SettingsLayoutProps {
