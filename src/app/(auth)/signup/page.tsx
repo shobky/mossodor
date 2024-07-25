@@ -173,7 +173,7 @@ export default function SignupPage() {
           </form>
           <div className="mt-4 text-center text-sm">
             Already have an account?{" "}
-            <Link href={`/login${msg && "?msg=" + msg}`} className="underline">
+            <Link href={`/login?${msg ? "msg=" + msg : ""}`} className="underline">
               Login
             </Link>
           </div>

@@ -50,7 +50,7 @@ export default async function OrderConfirmationPage({
     <div className="space-y-4 ">
       {/*Clears the cart in a useEffect */}
       <ClearCartOnSuccessfulOrder success={order.orderNumber ? true : false} />
-      <section className="px-1 space-y-4">
+      <section className="px-1">
         <div className="">
           <div className="flex items-center justify-between gap-4 md:gap-2">
             <p>{format(new Date(order.purchaseDate * 1000), "PPPP")}</p>

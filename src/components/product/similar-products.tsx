@@ -15,7 +15,7 @@ export default async function SimilarProducts({
   }
 
   return (
-    <div className="p-20 space-y-4 ">
+    <div className="py-20 space-y-4">
       <h4 className="text-center text-xl font-semibold">
         {product.name} Similar Products
       </h4>

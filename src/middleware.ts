@@ -4,6 +4,7 @@ export default withAuth(function middleware() {}, {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/login",
+    register: "/signup",
   },
 
   callbacks: {

@@ -37,8 +37,8 @@ export default function Logo({
     <Link href="/" className="z-20">
       <Image
         id="logo"
-        width={200}
-        height={200}
+        width={140}
+        height={80}
         priority
         alt="Mossodor logo"
         src={

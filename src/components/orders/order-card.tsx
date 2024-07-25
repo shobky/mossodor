@@ -48,7 +48,7 @@ export default function OrderCard({ order }: { order: IOrder }) {
                 <Image
                   className="w-20 group-hover:scale-125 ease-in-out duration-200 aspect-square"
                   src={item.thumpnail}
-                  alt={item.name}
+                  alt={item.name?? "Product Image"}
                   width={200}
                   height={200}
                 />
