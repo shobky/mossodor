@@ -6,12 +6,14 @@ import ShoPYourStyle from "@/components/home/shop-your-style";
 
 export default function Home() {
   return (
-    <main className="space-y-20 pb-32 ">
+    <main className=" pb-32 ">
       <Hero />
       <OurCategories />
+      <div className="space-y-10">
       <PopularProducts />
       <ShoPYourStyle />
       <Reviews />
+      </div>
     </main>
   );
 }

@@ -22,7 +22,7 @@ export function ReviewsCaroucel() {
       <ReviewOpenedDialog review={activeReview} setActiveReview={setActiveReview} />
       <CarouselContent>
         {customerReviews.map((review, index) => (
-          <CarouselItem className=" sm:basis-1/3 w-full" key={index}>
+          <CarouselItem className=" sm:basis-1/3  w-full" key={index}>
             <ReviewCard key={review._id + "_" + index} review={review}>
                 <Button
                     onClick={() => setActiveReview(review)}

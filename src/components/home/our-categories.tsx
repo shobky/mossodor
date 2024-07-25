@@ -8,16 +8,18 @@ import Link from "next/link";
 export default async function OurCategories() {
   const categories = await getPopulatedCategories();
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 relative -top-20 pt-10 rounded-t-3xl bg-background">
       <Padding className="space-y-1" variant="centered">
-        <SectionTitle>Our Lighting Categories <Layers /></SectionTitle>
+        <SectionTitle>
+          Our Lighting Categories <Layers />
+        </SectionTitle>
         <p className="relative   text-center mx-[15vw]">
-          Whether it&apos;s modern or traditional. Find the perfect lighting for any
-          room or style that fits your taste
+          Whether it&apos;s modern or traditional. Find the perfect lighting for
+          any room or style that fits your taste
         </p>
       </Padding>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 mx-[15vw] gap-4 items-center justify-center">
+      <div className="flex flex-wrap flex-row mx-[30vw] sm:mx-[15vw] gap-4 items-center justify-center">
         {categories?.map((category: any) => (
           <Link href={`/${category.slug}`} key={category._id} className="group">
             <div className="rounded-full aspect-square relative overflow-hidden  shadow-md">
@@ -29,7 +31,7 @@ export default async function OurCategories() {
                 alt={category.name}
               />
             </div>
-            <h2 className="text-base font-medium text-center my-2 group-hover:underline">
+            <h2 className="text-lg sm:text-base font-medium text-center my-2 group-hover:underline">
               {category.name}
             </h2>
           </Link>

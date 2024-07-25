@@ -27,6 +27,7 @@ export interface ICategory {
 
 export interface IProduct {
   _id?: string;
+  stock?: number;
   categoryIds: string[];
   variationGroupId: string | null;
   name: string;
@@ -108,11 +109,13 @@ export interface IVariationGroup {
   selectors: any;
   product_id: string;
   variations: {
+    stock: number;
     type: string;
     value: string;
     sku: string;
     ean: string;
     price: number;
+    discount: number;
     weight: string;
     height: string;
     width: string;

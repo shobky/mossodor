@@ -5,6 +5,8 @@ import BuyButton from "../shared/buy-button";
 import CartButtonContainer from "../shop/products/cart-button/cart-button-container";
 import { Activity, Loader2 } from "lucide-react";
 import { ProductVariationSelector } from "./variations/product-variation-selector";
+import ProductStock from "./product-stock";
+import ProductPrice from "./product-price";
 
 export default function ProductInfo({
   product,
@@ -15,18 +17,23 @@ export default function ProductInfo({
 }) {
   return (
     <div className="space-y-4">
-      <section className="flex justify-between items-center">
-        <p className=" font-medium  scale-75 -ml-4   text-white bg-green-600 border-[1.5px] border-white  border-dashed dark:text-white flex gap-2 items-center  py-2 px-4 text-sm rounded-full ">
-          <Activity strokeWidth={2.5} size={12} /> In Stock
-        </p>
+      <section className="flex items-center justify-between   w-full">
+        <ProductStock stock={product.stock} />
         <WishlistContainer product={product} />
       </section>
       <div className="space-y-4">
-        <p className="text-4xl font-bold ">{product.name}</p>
-        <p className="text-3xl font-bold">£{product.price}</p>
-        <h2 className="text-secondary-foreground  leading-[1.3rem] sm:w-[85%] ">
-          {product.description}
-        </h2>
+        <h1 className="text-4xl font-bold ">{product.name}</h1>
+        <ProductPrice
+          name={product.name}
+          discount={product.discount}
+          price={product.price}
+        />
+        <article>
+          <h2>{product.name}</h2>
+          <p className="text-secondary-foreground  leading-[1.3rem] sm:w-[85%] ">
+            {product.description}
+          </p>
+        </article>
 
         <Suspense
           fallback={

@@ -33,10 +33,11 @@ export default function ProductDetails({
         ]}
         alt={mergedProduct.altText}
       />
-      <div className="space-y-10">
+      <div className="space-y-10 col-span-4">
         <ProductInfo product={mergedProduct} variationGroup={variationGroup} />
         <ProductDimentions product={mergedProduct} />
         <ProductSpecifications
+        name={mergedProduct.name}
           specifications={mergedProduct.otherSpecifications}
         />
         {children}

@@ -37,8 +37,8 @@ export default function ProductImageSlider({
   };
 
   return (
-    <div className="space-y-1 lg:sticky top-[10vh] ">
-      <div className="grid overflow-hidden bg-secondary dark:bg-black w-full lg:w-[calc(30vw)]   rounded-lg justify-center items-start relative ">
+    <div className="space-y-1 lg:sticky top-[7vh] max-w-[88vw] lg:max-w-[28vw] col-span-3 mb-4 ">
+      <div className="overflow-hidden bg-secondary dark:bg-black rounded-lg justify-center items-start relative ">
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           loop={true}

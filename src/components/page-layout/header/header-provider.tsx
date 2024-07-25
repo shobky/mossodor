@@ -40,14 +40,12 @@ export const HeaderProvider = ({ children }: { children: ReactNode }) => {
   const closeDialog = () => setOpen(false);
 
   const pathname = usePathname();
-  const { setParam, removeParam } = useQueryParams();
   const segments = pathname?.split("/") ?? [];
   const header = document.getElementById("header");
 
   useEffect(() => {
     if (open) {
       setHeaderStyle(headerStyles.dialog);
-      setParam("dialog", "true");
       if (header) {
         header.style.paddingRight = "17px";
       }
@@ -57,7 +55,6 @@ export const HeaderProvider = ({ children }: { children: ReactNode }) => {
     } else {
       setHeaderStyle(headerStyles.themes);
     }
-    removeParam("dialog");
     if (header) {
       header.style.paddingRight = "0px";
     }

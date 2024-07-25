@@ -7,11 +7,11 @@ import {
 } from "@/components/ui/accordion";
 import { MessagesSquare } from "lucide-react";
 
-export const ProductFaqs = async ({ _id }: { _id: string | undefined }) => {
-  if (!_id) return null;
+export const ProductFaqs = async ({ ids }: { ids: string[] | [] }) => {
+  if (!ids) return null;
   let faqs: any = [];
   try {
-    faqs = await getProductFaqs(_id);
+    faqs = await getProductFaqs(ids);
   } catch (err: any) {
     console.log(err);
   }
@@ -24,7 +24,7 @@ export const ProductFaqs = async ({ _id }: { _id: string | undefined }) => {
       </p>
       <Accordion type="single" className="w-full space-y- ">
         {faqs?.map((faq: any, index: number) => (
-          <AccordionItem value={_id + index} key={index}>
+          <AccordionItem value={faq._id} key={index}>
             <AccordionTrigger className="text-left font-normal ">
               {faq.q}
             </AccordionTrigger>

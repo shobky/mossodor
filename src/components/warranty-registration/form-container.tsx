@@ -53,6 +53,7 @@ export default function WarrantyFormContainer({ order }: { order: IOrder }) {
   const [eligible, setEligible] = useState(true);
   const [differenceInDays, setDifferenceInDays] = useState(0);
   const router = useRouter();
+
   useEffect(() => {
     const today = new Date();
     const purchaseDate = new Date(order.purchaseDate * 1000);
@@ -67,6 +68,7 @@ export default function WarrantyFormContainer({ order }: { order: IOrder }) {
       setDifferenceInDays(differenceInDays);
     }
   }, [order]);
+  
   const handleInputChange = (key: keyof WarrantyFormData, value: any) => {
     setWarranty((prev) => ({ ...prev, [key]: value }));
   };

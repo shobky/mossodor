@@ -18,7 +18,7 @@ export const removeFromCartThunk = createAsyncThunk(
       return sku;
     }
     await Fetch(
-      `cart/user/${sku}`,
+      `orderItems/user/${sku}`,
       {
         method: "DELETE",
       },

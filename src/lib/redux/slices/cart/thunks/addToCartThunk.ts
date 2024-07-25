@@ -24,7 +24,7 @@ export const addToCartThunk = createAsyncThunk(
       return item;
     }
     await Fetch(
-      `cart/add/${item._id}/${item.sku}`,
+      `orderItems/add/${item._id}/${item.sku}`,
       {
         method: "POST",
       },

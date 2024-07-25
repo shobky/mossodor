@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import ProductPrice from "./product-price";
 
 // this is the product card displayed in the popular products section in home.
 export default function ProductCard({ product }: { product: any }) {
@@ -28,7 +29,12 @@ export default function ProductCard({ product }: { product: any }) {
             {product.description.slice(0, 70)}..
           </p>
           <div className="flex justify-between items-center gap-2">
-            <p className="font-bold text-sm sm:text-base">£{product.price}</p>
+            <ProductPrice
+              name={product.name}
+              className="font-bold text-sm sm:text-base"
+              discount={product.discount}
+              price={product.price}
+            />
             <Link href={`/products/${product.name}`}>
               <Button variant={"ghost"} size={"icon"}>
                 <ChevronRight size={15} strokeWidth={2.5} />

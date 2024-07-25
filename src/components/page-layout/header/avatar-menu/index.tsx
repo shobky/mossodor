@@ -27,17 +27,17 @@ export function AvatarMenu() {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem>
-          <Link href={"/shop"} className="flex gap-3 font-medium">
+          <Link href={"/shop"} className="w-full flex gap-3 font-medium">
             <Store size={20} /> Shop
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href={"/account"} className="flex gap-3 font-medium">
+          <Link href={"/account"} className="w-full flex gap-3 font-medium">
             <Settings size={20} /> Account
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href={"/account/orders"} className="flex gap-3 font-medium">
+          <Link href={"/account/orders"} className="w-full flex gap-3 font-medium">
             <History strokeWidth={2.5} size={20} /> My Orders
           </Link>
         </DropdownMenuItem>

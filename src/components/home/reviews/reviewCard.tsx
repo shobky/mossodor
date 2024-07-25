@@ -33,7 +33,7 @@ export const ReviewCard = ({
   children: ReactNode;
 }) => {
   return (
-    <div className="border  border-dashed shadow-sm p-6 rounded-2xl space-y-4  w-full  ">
+    <div className="border border-dashed shadow-sm p-6 rounded-2xl space-y-4 w-full min-h-[13.5rem]  ">
       <div className="flex items-center justify-between gap-4 w-full  ">
         <div className="flex items-center gap-4 w-full justify-between ">
           <Image

@@ -40,7 +40,7 @@ export default function WarrantyProductSku({
                   >
                     <div className="flex items-center ">
                       <p className="font-medium flex items-center">
-                        {item.name} <Dot size={20} /> {item.sku}
+                          {JSON.stringify({...item, thumpnail:null, _id:null, name:null,  product_id:null})}
                       </p>
                       <Dot size={20} />{" "}
                       <Image

@@ -66,7 +66,7 @@ export default async function ProductsPage({ params: { name } }: Props) {
       <Padding>
         <div className="lg:flex items-start gap-[calc(3rem+2.5vw)] pt-[5vh] lg:pt-[10vh]">
           <ProductDetails variationGroup={variationGroup} product={product}>
-            <ProductFaqs _id={product._id} />
+            <ProductFaqs ids={product.faqs as string[]} />
           </ProductDetails>
         </div>
         <div className="lg:mx-[7.5vw] ">

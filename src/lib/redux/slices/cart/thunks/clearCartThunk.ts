@@ -10,7 +10,7 @@ export const clearCartThunk = createAsyncThunk("cart/clearCart", async () => {
     return [];
   }
   await Fetch(
-    `cart/user`,
+    `orderItems/user`,
     {
       method: "DELETE",
     },

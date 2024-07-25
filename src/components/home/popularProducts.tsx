@@ -27,10 +27,9 @@ export default async function PopularProducts() {
         </div>
         <Link
           href="/shop"
-          className=" font-medium flex items-center gap-1  text-muted-foreground"
+          className=" underline flex items-center gap-1  text-sm text-muted-foreground"
         >
           Continue Shopping{" "}
-          <ChevronRightIcon size={18} className="relative top-[.8px]" />
         </Link>
       </div>
     </Padding>

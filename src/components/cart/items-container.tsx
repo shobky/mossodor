@@ -12,13 +12,13 @@ export default function CartItemsContainer({ items }: { items: any }) {
       {items?.map((item: any) => (
         <div
           key={"cart-items" + item.sku}
-          className="bg-muted p-4 sm:p-10 rounded-xl sm:flex sm:gap-10 items-center relative"
+          className="bg-muted p-4 sm:pb-2 pt-10 px-10 rounded-xl sm:flex sm:gap-10 items-center relative"
         >
           <CartItemControl item={item} />
           <Image
             src={item.thumpnail}
             alt={item.altText}
-            className="object-contain aspect-square rounded-xl w-full sm:w-60 p-4 sm:p-0 sm:pr-10"
+            className="object-contain aspect-square rounded-xl w-full sm:w-32 p-4 sm:p-0 sm:pr-10"
             width={500}
             height={500}
           />
@@ -27,21 +27,21 @@ export default function CartItemsContainer({ items }: { items: any }) {
               {item.name}
               <span className="text-muted-foreground">x{item.quantity}</span>
             </p>
-            <p className="font-medium text-base relative -top-2">
-              {[
-                item.otherSpecifications.find(
-                  (s: any) => s.name.toLowerCase() === "size"
-                )?.value,
-                item.otherSpecifications.find(
-                  (s: any) => s.name.toLowerCase() === "colour"
-                )?.value,
-              ].filter(s => s!== undefined)
-                .join(" + ")
-                .replace(",", "")}
-            </p>
-            <p className="text-secondary-foreground text-sm leading-[1.2rem] hidden sm:block text-justify-inter sm:mr-[5%] ">
-              {item.description}
-            </p>
+           {
+            item.otherSpecifications?.length > 0 &&
+             <p className="font-medium text-base relative -top-2">
+             {[
+               item.otherSpecifications.find(
+                 (s: any) => s.name.toLowerCase() === "size"
+               )?.value,
+               item.otherSpecifications.find(
+                 (s: any) => s.name.toLowerCase() === "colour"
+               )?.value,
+             ].filter(s => s!== undefined)
+               .join(" + ")
+               .replace(",", "")}
+           </p>
+           }
             <p className="text-2xl font-semibold">
               £{parseFloat(String(item.price * item.quantity)).toFixed(2)}
             </p>
@@ -56,7 +56,7 @@ const CartItemControl = ({ item }: { item: any }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="flex absolute right-0 top-0 sm:mx-6 m-6 sm:mt-4 gap-3 items-center">
+    <div className="flex absolute right-0 top-0 sm:mx-6 m-4  gap-3 items-center">
       <div className="flex gap-1 items-center">
         <Button
           onClick={() =>

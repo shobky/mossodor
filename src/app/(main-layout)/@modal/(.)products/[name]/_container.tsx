@@ -22,9 +22,9 @@ export default async function ProductContainer({ name }: { name: string }) {
   if (!product) return <div>Product not found</div>;
   return (
     <>
-      <div className="sm:flex items-start gap-[calc(3rem+2.5vw)] pt-[4vh] ">
+      <div className="lg:flex items-start gap-[calc(3rem+2.5vw)] pt-[4vh] ">
         <ProductDetails variationGroup={variationGroup} product={product}>
-          <ProductFaqs _id={product._id} />
+          <ProductFaqs ids={product.faqs as string[]} />
         </ProductDetails>
       </div>
       <SimilarProducts product={product} />

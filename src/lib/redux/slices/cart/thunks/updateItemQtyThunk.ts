@@ -21,7 +21,7 @@ export const updateCartItemThunk = createAsyncThunk(
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
     await Fetch(
-      `cart/user/${data.sku}/${data.quantity}`,
+      `orderItems/user/${data.sku}/${data.quantity}`,
       {
         method: "PUT",
       },

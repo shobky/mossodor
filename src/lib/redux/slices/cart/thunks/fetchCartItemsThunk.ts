@@ -11,7 +11,7 @@ export const fetchCartItemsThunk = createAsyncThunk(
     if (!session?.user) {
       return cart;
     }
-    const { items } = await Fetch(`cart/user/items`, {}, "secure");
+    const { items } = await Fetch(`orderItems/user/items`, {}, "secure");
     return [...items, ...cart];
   }
 );
