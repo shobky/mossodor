@@ -9,12 +9,12 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="bg-foreground text-background rounded-t-[40px] sm:rounded-t-[80px] z-[11] relative">
+    <div className="bg-foreground brightness-90 text-background rounded-t-[40px] sm:rounded-t-[80px] z-[11] relative">
       <Padding className="py-[10vh] ">
         <footer>
           <div className="space-y-2">
             <section className="space-y-4 col-span-2 xl:col-span-3">
-              <Logo ignoreModals={true} className="w-40 sm:w-44" />
+              <Logo ignoreModals={true}  className="w-40 sm:w-44" />
               <div className="space-y-2">
                 <p className="flex gap-2 items-start">
                   <Landmark

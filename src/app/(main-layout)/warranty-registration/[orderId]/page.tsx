@@ -21,7 +21,6 @@ export default async function WarrantyRegistrations({
     if (data?.order) {
       order = data.order;
     }
-    console.log(data, "Order Data");
   } catch (err: any) {
     console.error(err);
   }

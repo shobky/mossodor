@@ -32,11 +32,6 @@ export function AvatarMenu() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href={"/account"} className="w-full flex gap-3 font-medium">
-            <Settings size={20} /> Account
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
           <Link href={"/account/orders"} className="w-full flex gap-3 font-medium">
             <History strokeWidth={2.5} size={20} /> My Orders
           </Link>

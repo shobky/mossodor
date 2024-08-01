@@ -13,7 +13,9 @@ export async function generateMetadata({
 }: {
   params: { category: string };
 }): Promise<Metadata> {
-  const { category } = await Fetch(`categories/slug/${params.category}`);
+  const { category } = await Fetch(`categories/slug/${params.category}`, {
+    cache: "force-cache",
+  });
   if (!category) {
     return {
       title: "Mossodor",
@@ -36,7 +38,9 @@ export default async function CategoryPage({
   let category: ICategory | undefined = undefined;
   let children: ICategory[] | undefined = undefined;
   try {
-    const categoryData = await Fetch(`categories/slug/${params.category}`);
+    const categoryData = await Fetch(`categories/slug/${params.category}`, {
+      cache: "force-cache",
+    });
     category = categoryData.category;
 
     const childrenData = await Fetch(`categories/children`, {
@@ -50,13 +54,14 @@ export default async function CategoryPage({
 
   if (!category) return permanentRedirect("/shop");
   return (
-    <Padding className="min-h-[95vh] grid place-content-center gap-20 py-[8vh]">
-      <div className="w-full h-[var(--header-height)] bg-foreground  rounded-b-[40px] sm:rounded-b-[80px]  dark:bg-background absolute top-0 left-0" />
+    <Padding className="min-h-[95vh] grid place-content-center gap-20 py-[12vh]">
+      <div className="w-full h-[var(--header-height)] absolute top-0 left-0  "/>
       <section className="sm:mx-[12.5vw] space-y-4">
         <h1 className=" text-2xl sm:text-3xl font-medium sm:font-semibold text-center capitalize">
           {category?.name} Collection
         </h1>
         <h2 className="text-base text-center">{category?.description}</h2>
+        <br />
         <div className="grid grid-cols-2 sm:grid-cols-4 justify-center items-start gap-x-4 sm:gap-x-10 gap-y-4 ">
           {children?.map((child: any) => (
             <Link

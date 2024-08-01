@@ -17,7 +17,6 @@ export default async function SidebarUser() {
       </button></Link>
     );
 
-  console.log(session.user);
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-start gap-3 ">

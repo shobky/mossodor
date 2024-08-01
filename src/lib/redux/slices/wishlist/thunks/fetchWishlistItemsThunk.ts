@@ -10,7 +10,12 @@ export const fetchWishlistItemsThunk = createAsyncThunk(
     if (!session?.user?._id) return [];
     const { items } = await Fetch(
       `Wishlist/${session.user?._id}/items`,
-      {},
+      {
+        cache: "force-cache",
+        next: {
+          tags: ["wishlist"],
+        },
+      },
       "secure"
     );
     return items;

@@ -45,7 +45,7 @@ const callbacks = {
         method: "POST",
         body: JSON.stringify({
           email: user.email,
-          displayName: user.name,
+          name: user.name,
           image: user.image,
         }),
       });

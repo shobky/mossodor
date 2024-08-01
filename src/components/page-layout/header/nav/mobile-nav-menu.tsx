@@ -83,14 +83,6 @@ export function MobileNav({
                 <Award size={20} strokeWidth={2} />
                 <span>My warranties</span>
               </NavLink>
-              <NavLink onClose={handleOpen} href="/account">
-                <Settings size={20} strokeWidth={2} />
-                <span>Account</span>
-              </NavLink>
-              <NavLink onClose={handleOpen} href="/account/profile">
-                <User size={20} strokeWidth={2} />
-                <span>Profile</span>
-              </NavLink>
               <NavLink onClose={handleOpen} href="#">
                 <NotepadText size={20} strokeWidth={1.7} />
                 <span>Blog</span>

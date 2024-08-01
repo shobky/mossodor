@@ -5,7 +5,6 @@ import { getPaginatedProducts } from "@/lib/api/products.api";
 export const fetchPaginatedProductsThunk = createAsyncThunk(
   "products/fetchPaginatedProducts",
   async (data: { page: number; pageSize: number }) => {
-    console.log("THERE BOY")
     return await getPaginatedProducts(data.page, data.pageSize);
   }
 );
@@ -23,7 +22,6 @@ export const fetchPaginatedProductsReducers = (
         return !state.products.some((p) => p._id === product._id);
       });
       state.products = [...state.products, ...newProducts];
-      console.log(action.payload.count, "HI");
       state.totalProducts = action.payload.count;
     })
     .addCase(fetchPaginatedProductsThunk.rejected, (state, action) => {

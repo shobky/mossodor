@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { WishlistInitalState } from "../wishlist-slice";
 import { getSession } from "next-auth/react";
 import { Fetch } from "@/lib/actions/fetch";
+import revalidateByTag from "@/lib/actions/revalidate";
 
 export const addToWishlistThunk = createAsyncThunk(
   "wishlist/addToWishlist",
@@ -34,6 +35,7 @@ export const addToWishlistReducers = (
         toast.success(`Added ${action.payload.name} to your wishlist.`);
         state.items.push(action.payload);
       }
+      revalidateByTag("wishlist");
     })
     .addCase(addToWishlistThunk.rejected, (state, action) => {
       state.error = action.error.message;

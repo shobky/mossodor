@@ -8,7 +8,6 @@ export default async function Warranties() {
   try {
     const session = await getCurrentSession();
     const data = await Fetch(`warranties/${session?.user?._id}`, {}, "secure");
-    console.log(data, "Warranties Data");
     warranties = data.warranties;
   } catch (err: any) {
     console.log(err);

@@ -50,7 +50,10 @@ export const HeaderProvider = ({ children }: { children: ReactNode }) => {
         header.style.paddingRight = "17px";
       }
       return;
-    } else if (TRANSPARENT_PAGES[segments[1]]) {
+    } else if (
+      TRANSPARENT_PAGES[segments[1]] &&
+      (segments[1] === "" || segments[1] === "shop" || segments[2])
+    ) {
       setHeaderStyle(headerStyles.transparent);
     } else {
       setHeaderStyle(headerStyles.themes);

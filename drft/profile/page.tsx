@@ -1,5 +1,5 @@
 import { Separator } from "@/components/ui/separator";
-import { ProfileForm } from "../../../../components/profile/profile-form";
+import { ProfileForm } from "../../src/components/profile/profile-form";
 import { Fetch } from "@/lib/actions/fetch";
 
 export default async function ProfilePage() {

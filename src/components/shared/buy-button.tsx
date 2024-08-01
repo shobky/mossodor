@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 import { ArrowUpRight } from "lucide-react";
 import { useSession } from "next-auth/react";
-import { useDispatch } from "@/lib/redux/store";
 import { createCheckoutSession } from "@/lib/stripe/create-checkout-session";
 import { toast } from "sonner";
+import revalidateByTag from "@/lib/actions/revalidate";
 
 let asyncStripe: Promise<Stripe | null>;
 try {
@@ -79,6 +79,9 @@ const BuyButton = ({
       }
       // @ts-ignore
       await createCheckoutSession(items, String(total), session.user?._id);
+      setTimeout(() => {
+        revalidateByTag("orders");
+      }, 5000);
     } catch (err: any) {
       toast.error("Failed to checkout, please try again later.");
     }

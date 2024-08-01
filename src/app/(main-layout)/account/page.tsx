@@ -11,7 +11,6 @@ export default async function SettingsAccountPage() {
     console.error(error);
   }
 
-  console.log("the user:", user)
   return (
     <div className="space-y-6">
       <div>

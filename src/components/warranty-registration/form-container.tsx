@@ -31,7 +31,7 @@ interface WarrantyFormData {
   order_id?: string;
   user_id?: string;
 }
-
+  
 export default function WarrantyFormContainer({ order }: { order: IOrder }) {
   const [warranty, setWarranty] = useState<WarrantyFormData>({
     buyerFirstName: order.buyerName?.split(" ")[0] || "",

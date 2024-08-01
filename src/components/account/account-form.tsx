@@ -45,7 +45,6 @@ export function AccountForm({ user }: { user: any }) {
 
   function onSubmit(data: AccountFormValues) {}
 
-  console.log(user);
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">

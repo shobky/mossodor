@@ -1,5 +1,5 @@
 import { IOrder } from "@/lib/types";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -12,19 +12,20 @@ export default function OrderCard({ order }: { order: IOrder }) {
   return (
     <div className="p-6 border border-dashed bg-secondary/40 rounded-xl">
       <div className="flex items-center justify-between text-secondary-foreground">
-        <p>#{order.orderNumber}</p>
-        <div className="flex gap-2">
+        <p className="text-sm sm:text-base text-nowrap">
+          {format(new Date(order.purchaseDate * 1000), "PPPP")}
+        </p>
+        <div className="flex gap-2 justify-end w-full">
           <OrderActions order={order} />
-          <Link href={`/account/orders/${order.orderNumber}`}>
+
+          <Link className="block" href={`/account/orders/${order.orderNumber}`}>
             <Button variant={"ghost"} size={"icon"}>
-              <ArrowUpRight size={20} />
+              <ArrowRight size={20} />
             </Button>
           </Link>
         </div>
       </div>
-      <p className="text-sm sm:text-base">
-        {format(new Date(order.purchaseDate * 1000), "PPPP")}
-      </p>
+     
       <br />
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <section className="space-y-2">
@@ -48,7 +49,7 @@ export default function OrderCard({ order }: { order: IOrder }) {
                 <Image
                   className="w-20 group-hover:scale-125 ease-in-out duration-200 aspect-square"
                   src={item.thumpnail}
-                  alt={item.name?? "Product Image"}
+                  alt={item.name ?? "Product Image"}
                   width={200}
                   height={200}
                 />

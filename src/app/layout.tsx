@@ -24,7 +24,7 @@ export default async function RootLayout({
 }>) {
   const session = await getCurrentSession();
   return (
-    <html style={{ scrollBehavior: "smooth" }} lang="en">
+    <html style={{ scrollBehavior: "smooth" }} className="dark" lang="en">
       <body className={inter.className}>
         <SessionProvider session={session}>
           <ReduxProvider>

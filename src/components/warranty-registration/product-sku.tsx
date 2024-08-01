@@ -11,54 +11,59 @@ import {
 } from "@/components/ui/select";
 import { Input } from "../ui/input";
 import Image from "next/image";
-import { Dot } from "lucide-react";
+
+interface OrderItem {
+  _id: string;
+  sku: string;
+  thumpnail: string;
+  name: string;
+  quantity: number;
+  price: number;
+}
+
+interface WarrantyProductSkuProps {
+  orderItems: any;
+  handleInputChange: any;
+}
+
 export default function WarrantyProductSku({
   orderItems,
   handleInputChange,
-}: {
-  orderItems: any[];
-  handleInputChange: any;
-}) {
+}: WarrantyProductSkuProps) {
   return (
     <div className="flex items-center gap-4 w-full">
       {orderItems?.length > 0 ? (
-        <Select onValueChange={(v) => handleInputChange("productSKU", JSON.parse(v).sku)}>
-          <SelectTrigger className="w-full">
+        <Select onValueChange={(sku) => handleInputChange("productSKU", sku)}>
+          <SelectTrigger className="w-full h-14">
             <SelectValue placeholder="Select product SKU" />
           </SelectTrigger>
-          <SelectContent align="center" className="">
+          <SelectContent align="center">
             <SelectGroup>
               <SelectLabel>Product SKU</SelectLabel>
-              {orderItems.map((item) => {
-                return (
-                  <SelectItem
-                    key={item._id}
-                    value={JSON.stringify({
-                      sku: item.sku,
-                      _id: item._id,
-                    })}
-                  >
-                    <div className="flex items-center ">
-                      <p className="font-medium flex items-center">
-                          {JSON.stringify({...item, thumpnail:null, _id:null, name:null,  product_id:null})}
+              {orderItems.map((item:any) => (
+                <SelectItem key={item._id} value={item.sku}>
+                  <div className="flex items-center justify-start text-left space-x-2">
+                    <Image
+                      src={item.thumpnail}
+                      width={150}
+                      height={150}
+                      alt={item.name}
+                      className="object-contain w-12 h-12 aspect-square"
+                    />
+                    <div>
+                      <p className="font-medium">{item.sku}</p>
+                      <p className="text-sm text-gray-500">
+                        {item.name} - Qty: {item.quantity}, Price: ${item.price}
                       </p>
-                      <Dot size={20} />{" "}
-                      <Image
-                        src={item.thumpnail}
-                        width={25}
-                        height={25}
-                        alt={item.title}
-                        className="object-contain w-8 h-8 aspect-square p-1  "
-                      />
                     </div>
-                  </SelectItem>
-                );
-              })}
+                  </div>
+                </SelectItem>
+              ))}
             </SelectGroup>
           </SelectContent>
         </Select>
       ) : (
-        <Input placeholder="SKU" />
+        <Input placeholder="SKU" onChange={(e) => handleInputChange("productSKU", e.target.value)} />
       )}
     </div>
   );

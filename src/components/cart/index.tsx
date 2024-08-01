@@ -8,7 +8,6 @@ export default function Cart() {
   const { items, count, total } = useCart();
   if (!count || count === 0) return <p>No items in the cart</p>;
   
-  console.log("Cart render", items);
   return (
     <section className="space-y-6">
       <CartControl items={items} total={total} />

@@ -25,17 +25,6 @@ const sidebarNavItems = [
     href: "/account/warranties",
     icon: <Award size={18} strokeWidth={2.5} />,
   },
-  {
-    title: "Account",
-    href: "/account",
-    icon: <Settings size={18} strokeWidth={2.5} />,
-  },
-  {
-    title: "Profile",
-    href: "/account/profile",
-    icon: <User size={18} strokeWidth={2.5} />,
-  },
-
 ];
 
 interface SettingsLayoutProps {

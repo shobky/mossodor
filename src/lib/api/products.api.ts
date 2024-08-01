@@ -6,26 +6,26 @@ export const getPaginatedProducts = async (
   pageSize: number
 ): Promise<{ products: IProduct[]; count: number }> => {
   const data = await Fetch(`products?page=${page}&pageSize=${pageSize}`, {
-    cache: "default",
+    cache: "force-cache",
   });
   return data;
 };
 
-export const getFilteredProducts = async (
+export const  getFilteredProducts = async (
   category_slug?: string,
   subCategory_slug?: string,
   filters?: any,
   page?: number,
   pageSize?: number
-): Promise<{products:IProduct[], count:number}> => {
+): Promise<{ products: IProduct[]; count: number }> => {
   const data = await Fetch(
     `products/categories/${category_slug}/${subCategory_slug}?page=${page}&pageSize=${pageSize}`,
     {
       method: "POST",
       body: JSON.stringify({ filters }),
-      cache: "no-cache",
+      cache: "force-cache",
     }
-  );
+);
   return data;
 };
 
@@ -62,8 +62,8 @@ export const getPopularProducts = async () => {
   return data.products;
 };
 
-  export const gerVariationGroup = async (variationGroupId: string | null) => {
-    if (!variationGroupId) return Promise.resolve({});
-    const data = await Fetch(`variation-groups/${variationGroupId}`);
-    return data.variationGroup;
-  };
+export const gerVariationGroup = async (variationGroupId: string | null) => {
+  if (!variationGroupId) return Promise.resolve({});
+  const data = await Fetch(`variation-groups/${variationGroupId}`);
+  return data.variationGroup;
+};
